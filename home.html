@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portal Feedback - Home</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="css/home.css" />
+</head>
+<body>
+
+  <header class="header d-flex align-items-center justify-content-between px-4 py-3">
+    <div class="d-flex align-items-center gap-3">
+      <img src="img/logo-if.png" alt="Logo IFCE" class="logo-ifce" />
+    </div>
+    <h2 class="mb-0 mx-auto">Portal Feedback</h2>
+    <button id="btnSair" class="btn btn-outline-secondary">Sair</button>
+  </header>
+
+
+
+  <nav class="nav-categorias d-flex justify-content-center gap-4 py-2">
+    <a href="#" class="categoria">Infraestrutura</a>
+    <a href="#" class="categoria">Auxílio</a>
+    <a href="#" class="categoria">Transporte</a>
+    <a href="#" class="categoria">Segurança</a>
+    <a href="#" class="categoria">Outros</a>
+  </nav>
+
+  <!-- Ícone flutuante e menu de ações -->
+<div class="menu-flutuante">
+  <button id="toggleMenu" class="btn-flutuante">+</button>
+  <div id="menuAcoes" class="acoes hidden">
+    <button onclick="criarPublicacao()" class="acao-btn">Criar Publicação</button>
+    <button onclick="verFavoritos()" class="acao-btn">Ver Favoritos</button>
+  </div>
+</div>
+
+
+  <!-- Conteúdo principal virá aqui -->
+  <script src="js/home.js"></script>
+</body>
+</html>
