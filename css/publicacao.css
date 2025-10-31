@@ -1,0 +1,29 @@
+body {
+  background-color: #f5f5f5;
+  font-family: 'Poppins', sans-serif;
+}
+
+.container-publicacao {
+  padding: 20px;
+}
+
+.form-box {
+  background-color: #fff;
+  width: 100%;
+  max-width: 350px;
+}
+
+.estrela-favorito {
+  font-size: 56px;
+  color: #ccc;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.estrela-favorito.favorito {
+  color: gold;
+}
+
+#dataAtual {
+  min-width: 120px;
+}
