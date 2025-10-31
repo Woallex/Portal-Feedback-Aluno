@@ -20,7 +20,16 @@ function verFavoritos() {
 }
 
 function renderizarPublicacoes() {
-  const categorias = ["Infraestrutura", "Auxílios", "Transporte", "Segurança", "Outros"];
+  const categorias = [
+  "Infraestrutura",
+  "Alimentação",
+  "Transporte",
+  "Limpeza",
+  "TI/Portais",
+  "Acadêmico",
+  "Eventos/Calendário",
+  "Segurança"
+];
   const publicacoes = JSON.parse(localStorage.getItem("publicacoes")) || [];
 
   const container = document.createElement("div");
