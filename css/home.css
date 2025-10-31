@@ -1,0 +1,51 @@
+@import url("icone-flutuane.css");
+@import url("secao-categorias.css");
+@import url("seta-flutuante.css");
+@import url("card-publicacao.css");
+
+.header {
+  background-color: #fff;
+  color: #000;
+  border-bottom: 1px solid #ddd;
+}
+
+.logo-ifce {
+  width: 150px;
+  height: auto;
+}
+
+.portal-title {
+  font-weight: 600;
+}
+
+#btnSair {
+  border: 1px solid #6c757d;
+  background-color: #fff;
+  color: #6c757d;
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: 1rem;
+  transition: background-color 0.3s;
+}
+
+#btnSair:hover {
+  background-color: #f0f0f0;
+}
+
+
+.nav-categorias {
+  background-color: #f5f5f5;
+  border-bottom: 1px solid #ddd;
+}
+
+.categoria {
+  color: #008037;
+  text-decoration: none;
+  font-weight: 500;
+  padding: 8px 12px;
+  transition: 0.3s;
+}
+
+.categoria:hover {
+  text-decoration: underline;
+}
