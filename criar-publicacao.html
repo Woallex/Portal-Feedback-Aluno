@@ -29,17 +29,18 @@
           <textarea class="form-control" id="descricao" rows="3" minlength="10" maxlength="250" required></textarea>
         </div>
 
-        <div class="mb-3">
-          <label for="categoria" class="form-label">Categoria</label>
-          <select class="form-select" id="categoria" required>
-            <option value="">Selecione</option>
-            <option value="Infraestrutura">Infraestrutura</option>
-            <option value="Auxílio">Auxílio</option>
-            <option value="Transporte">Transporte</option>
-            <option value="Segurança">Segurança</option>
-            <option value="Outros">Outros</option>
-          </select>
-        </div>
+        <select id="categoria" required>
+          <option value="">Selecione uma categoria</option>
+          <option value="Infraestrutura">Infraestrutura</option>
+          <option value="Alimentação">Alimentação</option>
+          <option value="Transporte">Transporte</option>
+          <option value="Limpeza">Limpeza</option>
+          <option value="TI/Portais">TI/Portais</option>
+          <option value="Acadêmico">Acadêmico</option>
+          <option value="Eventos/Calendário">Eventos/Calendário</option>
+          <option value="Segurança">Segurança</option>
+        </select>
+
 
         <div class="mb-3 d-flex justify-content-between align-items-center">
           <label class="form-label mb-0">Data</label>
