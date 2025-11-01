@@ -1,3 +1,32 @@
+document.addEventListener("DOMContentLoaded", async () => {
+  const token = localStorage.getItem("token");
+  const userEmail = localStorage.getItem("userEmail");
+
+  if (!token) {
+    window.location.href = "entrada.html";
+    return;
+  }
+
+  try {
+    const response = await fetch("http://127.0.0.1:5000/reclamacoes", {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    });
+
+    const result = await response.json();
+    if (!result.ok) throw new Error("Erro ao buscar publicações");
+
+    renderizarPublicacoes(result.data, userEmail);
+
+  } catch (error) {
+    console.error("Erro ao carregar publicações:", error);
+    alert("Erro ao carregar publicações.");
+  }
+});
+
+
 document.getElementById("btnSair").addEventListener("click", function () {
   localStorage.removeItem("userEmail");
   window.location.href = "entrada.html";
@@ -19,18 +48,17 @@ function verFavoritos() {
   window.location.href = "favoritos.html";
 }
 
-function renderizarPublicacoes() {
+function renderizarPublicacoes(publicacoes, userEmail) {
   const categorias = [
-  "Infraestrutura",
-  "Alimentação",
-  "Transporte",
-  "Limpeza",
-  "TI/Portais",
-  "Acadêmico",
-  "Eventos/Calendário",
-  "Segurança"
-];
-  const publicacoes = JSON.parse(localStorage.getItem("publicacoes")) || [];
+    "Infraestrutura",
+    "Alimentação",
+    "Transporte",
+    "Limpeza",
+    "TI/Portais",
+    "Acadêmico",
+    "Eventos/Calendário",
+    "Segurança"
+  ];
 
   const container = document.createElement("div");
   container.classList.add("container", "mt-4");
@@ -52,7 +80,7 @@ function renderizarPublicacoes() {
 
     const filtradas = publicacoes
       .filter(p => p.categoria === categoria)
-      .sort((a, b) => b.favorito - a.favorito);
+      .sort((a, b) => (b.favorito || 0) - (a.favorito || 0));
 
     filtradas.forEach(pub => {
       const card = document.createElement("div");
@@ -63,7 +91,7 @@ function renderizarPublicacoes() {
 
       const descricao = document.createElement("div");
       descricao.classList.add("descricao");
-      descricao.textContent = pub.descricao;
+      descricao.textContent = pub.corpo;
 
       const categoriaInfo = document.createElement("div");
       categoriaInfo.classList.add("categoria-info");
@@ -71,32 +99,16 @@ function renderizarPublicacoes() {
 
       const autor = document.createElement("div");
       autor.classList.add("autor-info");
-      autor.textContent = `Publicado por: ${localStorage.getItem("userEmail") || "Usuário"}`;
+      autor.textContent = `Publicado por: ${userEmail.split("@")[0]}`;
 
       const data = document.createElement("div");
       data.classList.add("data-info");
       data.textContent = `Data: ${pub.data}`;
 
-
       const estrela = document.createElement("span");
       estrela.classList.add("estrela");
-      if (pub.favorito) estrela.classList.add("favorito");
+      estrela.setAttribute("data-id", pub.id);
       estrela.textContent = pub.favorito ? "★" : "☆";
-
-      estrela.addEventListener("click", () => {
-        const posicaoReal = publicacoes.findIndex(p =>
-          p.titulo === pub.titulo &&
-          p.descricao === pub.descricao &&
-          p.categoria === pub.categoria &&
-          p.data === pub.data
-        );
-
-        if (posicaoReal !== -1) {
-          publicacoes[posicaoReal].favorito = !publicacoes[posicaoReal].favorito;
-          localStorage.setItem("publicacoes", JSON.stringify(publicacoes));
-          location.reload();
-        }
-      });
 
       const header = document.createElement("div");
       header.classList.add("d-flex", "justify-content-between", "align-items-start", "mb-2");
@@ -132,7 +144,6 @@ function renderizarPublicacoes() {
       btnEsquerda.style.display = scrollContainer.scrollLeft > 0 ? "block" : "none";
     });
 
-
     setTimeout(() => {
       const temOverflow = scrollContainer.scrollWidth > scrollContainer.clientWidth;
       if (temOverflow) {
@@ -148,5 +159,3 @@ function renderizarPublicacoes() {
 
   document.body.appendChild(container);
 }
-
-renderizarPublicacoes();
