@@ -21,6 +21,7 @@ document.getElementById("loginForm").addEventListener("submit", async function (
 
     localStorage.setItem("userEmail", result.data.login);
     localStorage.setItem("userId", result.data.id);
+    localStorage.setItem("token", result.data.token);
 
     window.location.href = "home.html";
   } catch (error) {
