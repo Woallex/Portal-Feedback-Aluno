@@ -4,35 +4,26 @@ document.getElementById("loginForm").addEventListener("submit", async function (
   const email = document.getElementById("email").value.trim();
   const password = document.getElementById("password").value.trim();
 
-  if (!email || !password) {
-    alert("Preencha todos os campos!");
-    return;
-  }
-
   try {
     const response = await fetch("http://127.0.0.1:5000/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      credentials: "include", // mantém sessão Flask
+      credentials: "include",
       body: JSON.stringify({ login: email, senha: password })
     });
 
-    if (!response.ok) {
-      const errorText = await response.text();
-      alert("Erro ao fazer login: " + errorText);
+    const result = await response.json();
+
+    if (!result.ok) {
+      alert(`Erro ao fazer login: ${JSON.stringify(result, null, 2)}`);
       return;
     }
 
-    const data = await response.json();
+    localStorage.setItem("userEmail", result.data.login);
+    localStorage.setItem("userId", result.data.id);
 
-    // salva o ID e o login do usuário no localStorage
-    localStorage.setItem("userId", data.id);
-    localStorage.setItem("userEmail", data.login);
-
-    alert("Login realizado com sucesso!");
     window.location.href = "home.html";
   } catch (error) {
-    console.error("Erro:", error);
     alert("Erro ao conectar com o servidor.");
   }
 });
