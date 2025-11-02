@@ -8,17 +8,33 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
 
   try {
-    const response = await fetch("http://127.0.0.1:5000/reclamacoes", {
-      method: "GET",
-      headers: {
-        Authorization: `Bearer ${token}`
-      }
-    });
+    const [reclamacoesRes, favoritosRes] = await Promise.all([
+      fetch("http://127.0.0.1:5000/reclamacoes", {
+        method: "GET",
+        headers: { Authorization: `Bearer ${token}` }
+      }),
+      fetch("http://127.0.0.1:5000/favoritos", {
+        method: "GET",
+        headers: { "Content-Type": "application/json" },
+        credentials: "include"
+      })
+    ]);
 
-    const result = await response.json();
-    if (!result.ok) throw new Error("Erro ao buscar publicações");
+    const reclamacoesData = await reclamacoesRes.json();
+    const favoritosData = await favoritosRes.json();
 
-    renderizarPublicacoes(result.data, userEmail);
+    if (!reclamacoesData.ok || !favoritosData.ok) {
+      throw new Error("Erro ao buscar dados");
+    }
+
+    const favoritosIds = new Set(favoritosData.data.map(f => f.id));
+
+    const publicacoes = reclamacoesData.data.map(pub => ({
+      ...pub,
+      favorito: favoritosIds.has(pub.id)
+    }));
+
+    renderizarPublicacoes(publicacoes, userEmail);
 
   } catch (error) {
     console.error("Erro ao carregar publicações:", error);
@@ -106,9 +122,37 @@ function renderizarPublicacoes(publicacoes, userEmail) {
       data.textContent = `Data: ${pub.data}`;
 
       const estrela = document.createElement("span");
-      estrela.classList.add("estrela");
-      estrela.setAttribute("data-id", pub.id);
+      estrela.classList.add("estrela", "favorito");
       estrela.textContent = pub.favorito ? "★" : "☆";
+      estrela.setAttribute("data-id", pub.id);
+      estrela.style.cursor = "pointer";
+
+      estrela.addEventListener("click", async () => {
+        const complaintId = pub.id;
+        const favoritada = pub.favorito;
+        const metodo = favoritada ? "DELETE" : "POST";
+
+        try {
+          const response = await fetch(`http://127.0.0.1:5000/favoritos/${complaintId}`, {
+            method: metodo,
+            headers: {
+              "Content-Type": "application/json"
+            },
+            credentials: "include"
+          });
+
+          const result = await response.json();
+          if (!result.ok) throw new Error(result.error?.message || "Erro ao atualizar favorito");
+
+          pub.favorito = !favoritada;
+          estrela.textContent = pub.favorito ? "★" : "☆";
+
+        } catch (error) {
+          console.error("Erro ao favoritar/desfavoritar:", error);
+          alert("Não foi possível atualizar o favorito.");
+        }
+      });
+
 
       const header = document.createElement("div");
       header.classList.add("d-flex", "justify-content-between", "align-items-start", "mb-2");
