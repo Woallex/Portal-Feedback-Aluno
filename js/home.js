@@ -82,6 +82,18 @@ function renderizarPublicacoes(publicacoes, userEmail) {
   categorias.forEach(categoria => {
     const secao = document.createElement("div");
     secao.classList.add("categoria-section");
+    const idMap = {
+      "Infraestrutura": "infraestrutura",
+      "Alimentação": "alimentacao",
+      "Transporte": "transporte",
+      "Limpeza": "limpeza",
+      "TI/Portais": "tiportais",
+      "Acadêmico": "academico",
+      "Eventos/Calendário": "eventoscalendario",
+      "Segurança": "seguranca"
+    };
+    secao.id = idMap[categoria];
+
 
     const titulo = document.createElement("h5");
     titulo.textContent = categoria;
