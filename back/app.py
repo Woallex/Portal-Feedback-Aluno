@@ -65,6 +65,27 @@ def load_complaints():
             complaints = json.load(f)
         except json.JSONDecodeError:
             complaints = []
+@app.route('/buscarreclamacao', methods=['GET'])
+def buscar_reclamacao():
+    load_complaints()  # Carrega os dados atualizados das reclamações
+    nome = request.args.get('nome')
+    if not nome:
+        # Parâmetro 'nome' é obrigatório
+        return jsonify({
+            "ok": False,
+            "data": None,
+            "error": {"code": 400, "message": "Parâmetro 'nome' é obrigatório."}
+        }), 400
+    nome = nome.strip()
+    if not nome:
+        return jsonify({
+            "ok": False,
+            "data": None,
+            "error": {"code": 400, "message": "O parâmetro 'nome' não pode ser vazio."}
+        }), 400
+    # Filtra reclamações onde 'titulo' contém a string (case-insensitive)
+    resultados = [c for c in complaints if nome.lower() in c['titulo'].lower()]
+    return jsonify({"ok": True, "data": resultados, "error": None}), 200
 
 @app.route('/images', methods=['GET'])
 def get_image():
