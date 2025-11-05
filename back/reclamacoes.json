@@ -1,0 +1,90 @@
+[
+    {
+        "id": 1,
+        "titulo": "Luz queimada no banheiro do bloco A",
+        "corpo": "A luz do banheiro masculino do bloco A está queimada há três dias.",
+        "categoria": "Infraestrutura",
+        "data": "25/10/2025",
+        "autor": "aluno1@ifce.edu.br"
+    },
+    {
+        "id": 2,
+        "titulo": "Falta de papel nas impressoras",
+        "corpo": "As impressoras do laboratório de informática estão sem papel há uma semana.",
+        "categoria": "Infraestrutura",
+        "data": "26/10/2025",
+        "autor": "aluno2@ifce.edu.br"
+    },
+    {
+        "id": 3,
+        "titulo": "Cardápio diferente do anunciado",
+        "corpo": "O almoço servido hoje foi diferente do cardápio publicado no site.",
+        "categoria": "Alimentação",
+        "data": "26/10/2025",
+        "autor": "aluno1@ifce.edu.br"
+    },
+    {
+        "id": 4,
+        "titulo": "Ônibus saiu antes do horário",
+        "corpo": "O motorista do ônibus das 18h saiu 10 minutos antes e alguns alunos ficaram.",
+        "categoria": "Transporte",
+        "data": "27/10/2025",
+        "autor": "aluno2@ifce.edu.br"
+    },
+    {
+        "id": 5,
+        "titulo": "Falta de limpeza nas salas de aula",
+        "corpo": "As salas do bloco B não foram limpas após o turno da manhã.",
+        "categoria": "Limpeza",
+        "data": "27/10/2025",
+        "autor": "aluno1@ifce.edu.br"
+    },
+    {
+        "id": 6,
+        "titulo": "Wi-Fi instável na biblioteca",
+        "corpo": "A conexão de internet na biblioteca está caindo com frequência.",
+        "categoria": "TI/Portais",
+        "data": "27/10/2025",
+        "autor": "aluno2@ifce.edu.br"
+    },
+    {
+        "id": 7,
+        "titulo": "Falta de ventiladores em sala",
+        "corpo": "A sala 104 do bloco C está sem ventiladores funcionando.",
+        "categoria": "Infraestrutura",
+        "data": "28/10/2025",
+        "autor": "aluno1@ifce.edu.br"
+    },
+    {
+        "id": 8,
+        "titulo": "Grade de disciplinas desatualizada",
+        "corpo": "O portal acadêmico ainda mostra a grade antiga do curso de Sistemas.",
+        "categoria": "Acadêmico",
+        "data": "28/10/2025",
+        "autor": "aluno2@ifce.edu.br"
+    },
+    {
+        "id": 9,
+        "titulo": "Evento cancelado sem aviso prévio",
+        "corpo": "A palestra de inovação foi cancelada, mas ninguém foi avisado.",
+        "categoria": "Eventos/Calendário",
+        "data": "28/10/2025",
+        "autor": "aluno1@ifce.edu.br"
+    },
+    {
+        "id": 10,
+        "titulo": "Falta de segurança no estacionamento",
+        "corpo": "Alguns alunos tiveram bicicletas furtadas no estacionamento interno.",
+        "categoria": "Segurança",
+        "data": "28/10/2025",
+        "autor": "aluno2@ifce.edu.br"
+    },
+    {
+        "id": 11,
+        "titulo": "Luz queimada no banheiro do bloco B",
+        "corpo": "Sem iluminação no banheiro masculino, difícil usar à noite.",
+        "categoria": "Transporte",
+        "data": "28/10/2025",
+        "autor": "aluno1@ifce.edu.br"
+    }
+]
