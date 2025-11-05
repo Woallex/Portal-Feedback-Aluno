@@ -15,8 +15,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       }),
       fetch("http://127.0.0.1:5000/favoritos", {
         method: "GET",
-        headers: { "Content-Type": "application/json" },
-        credentials: "include"
+        headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` }
       })
     ]);
 
@@ -30,7 +29,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     const favoritosIds = new Set(favoritosData.data.map(f => f.id));
 
     const publicacoes = reclamacoesData.data.map(pub => ({
-      ...pub,
+      ...pub,                        // <-- conserto do spread
       favorito: favoritosIds.has(pub.id)
     }));
 
@@ -42,9 +41,10 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
 });
 
-
 document.getElementById("btnSair").addEventListener("click", function () {
   localStorage.removeItem("userEmail");
+  localStorage.removeItem("token");
+  localStorage.removeItem("userId");
   window.location.href = "entrada.html";
 });
 
@@ -58,7 +58,6 @@ toggleBtn.addEventListener("click", () => {
 function criarPublicacao() {
   window.location.href = "criar-publicacao.html";
 }
-
 
 function verFavoritos() {
   window.location.href = "favoritos.html";
@@ -93,7 +92,6 @@ function renderizarPublicacoes(publicacoes, userEmail) {
       "Segurança": "seguranca"
     };
     secao.id = idMap[categoria];
-
 
     const titulo = document.createElement("h5");
     titulo.textContent = categoria;
@@ -148,9 +146,9 @@ function renderizarPublicacoes(publicacoes, userEmail) {
           const response = await fetch(`http://127.0.0.1:5000/favoritos/${complaintId}`, {
             method: metodo,
             headers: {
-              "Content-Type": "application/json"
-            },
-            credentials: "include"
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${localStorage.getItem("token") || ""}`
+            }
           });
 
           const result = await response.json();
@@ -164,7 +162,6 @@ function renderizarPublicacoes(publicacoes, userEmail) {
           alert("Não foi possível atualizar o favorito.");
         }
       });
-
 
       const header = document.createElement("div");
       header.classList.add("d-flex", "justify-content-between", "align-items-start", "mb-2");

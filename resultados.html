@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Favoritados - Portal Feedback</title>
+  <title>Resultados da Busca - Portal Feedback</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="css/home.css" />
-  <link rel="stylesheet" href="css/favoritos.css">
+  <link rel="stylesheet" href="css/resultados.css" />
   <!-- Patch: redireciona fetch('/rota') para o backend Flask -->
   <script>
     (function () {
@@ -23,6 +23,7 @@
 </head>
 <body>
 
+  <!-- Cabeçalho idêntico ao favoritos -->
   <header class="header d-flex align-items-center px-4 py-3 position-relative">
     <div class="d-flex align-items-center gap-3">
       <img src="img/logo-if.png" alt="Logo IFCE" class="logo-ifce" />
@@ -31,23 +32,28 @@
     <button id="btnSair" class="btn btn-outline-dark ms-auto">Sair</button>
   </header>
 
+  <!-- Navegação (mesma estética) -->
   <nav class="nav-categorias d-flex justify-content-center gap-4 py-2">
     <a href="#" class="categoria">Infraestrutura</a>
     <a href="#" class="categoria">Alimentação</a>
     <a href="#" class="categoria">Transporte</a>
     <a href="#" class="categoria">TI/Portais</a>
     <a href="#" class="categoria">Acadêmico</a>
-    <a href="" class="categoria">Eventos/Calendário</a>
-    <a href="" class="categoria">Segurança</a>
+    <a href="#" class="categoria">Eventos/Calendário</a>
+    <a href="#" class="categoria">Segurança</a>
   </nav>
 
+  <!-- Título e botão voltar -->
   <div class="d-flex justify-content-between align-items-center px-4 mt-3">
-    <h4 class="mb-0">Favoritados</h4>
-    <button id="btnVoltar" class="btn btn-outline-secondary">Voltar</button>
+    <h4 class="mb-0">Resultados da Busca</h4>
+    <a href="home.html" class="btn btn-outline-secondary">Voltar</a>
   </div>
 
-  <div id="favoritosContainer" class="container mt-4"></div>
+  <!-- Container dos resultados -->
+  <div id="resultadosContainer" class="container mt-4">
+    <p>Carregando resultados...</p>
+  </div>
 
-  <script src="js/favoritos.js"></script>
+  <script src="js/busca.js"></script>
 </body>
 </html>

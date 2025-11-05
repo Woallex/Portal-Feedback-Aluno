@@ -83,8 +83,640 @@
         "id": 11,
         "titulo": "Luz queimada no banheiro do bloco B",
         "corpo": "Sem iluminação no banheiro masculino, difícil usar à noite.",
-        "categoria": "Transporte",
+        "categoria": "Infraestrutura",
         "data": "28/10/2025",
         "autor": "aluno1@ifce.edu.br"
+    },
+    {
+        "id": 12,
+        "titulo": "Ar-condicionado sem manutenção",
+        "corpo": "Os aparelhos do bloco D fazem muito ruído e não gelam.",
+        "categoria": "Infraestrutura",
+        "data": "29/10/2025",
+        "autor": "aluno3@ifce.edu.br"
+    },
+    {
+        "id": 13,
+        "titulo": "Rampas de acesso escorregadias",
+        "corpo": "A rampa próxima ao auditório não tem piso antiderrapante.",
+        "categoria": "Infraestrutura",
+        "data": "29/10/2025",
+        "autor": "aluno4@ifce.edu.br"
+    },
+    {
+        "id": 14,
+        "titulo": "Falta de opções vegetarianas",
+        "corpo": "O restaurante universitário ofereceu apenas pratos com carne no jantar.",
+        "categoria": "Alimentação",
+        "data": "29/10/2025",
+        "autor": "aluno5@ifce.edu.br"
+    },
+    {
+        "id": 15,
+        "titulo": "Bebedouros sem pressão",
+        "corpo": "Bebedouros dos blocos A e C com pouca vazão e água quente.",
+        "categoria": "Infraestrutura",
+        "data": "29/10/2025",
+        "autor": "aluno6@ifce.edu.br"
+    },
+    {
+        "id": 16,
+        "titulo": "Ônibus lotado e sem ar",
+        "corpo": "O transporte das 7h está superlotado, sem ventilação adequada.",
+        "categoria": "Transporte",
+        "data": "30/10/2025",
+        "autor": "aluno7@ifce.edu.br"
+    },
+    {
+        "id": 17,
+        "titulo": "Motorista não parou no ponto interno",
+        "corpo": "O circular ignorou o ponto em frente ao bloco E.",
+        "categoria": "Transporte",
+        "data": "30/10/2025",
+        "autor": "aluno8@ifce.edu.br"
+    },
+    {
+        "id": 18,
+        "titulo": "Banheiros sem sabão",
+        "corpo": "Diversos banheiros sem reposição de sabão líquido desde ontem.",
+        "categoria": "Limpeza",
+        "data": "30/10/2025",
+        "autor": "aluno9@ifce.edu.br"
+    },
+    {
+        "id": 19,
+        "titulo": "Cestos de lixo transbordando",
+        "corpo": "Corredores do bloco B com lixo acumulado no fim do dia.",
+        "categoria": "Limpeza",
+        "data": "30/10/2025",
+        "autor": "servidor1@ifce.edu.br"
+    },
+    {
+        "id": 20,
+        "titulo": "Portal fora do ar durante matrícula",
+        "corpo": "Sistema caiu por 40 minutos no início do ajuste de matrícula.",
+        "categoria": "TI/Portais",
+        "data": "30/10/2025",
+        "autor": "aluno10@ifce.edu.br"
+    },
+    {
+        "id": 21,
+        "titulo": "Falha no login SSO",
+        "corpo": "Erro de autenticação impede acesso ao e-mail institucional.",
+        "categoria": "TI/Portais",
+        "data": "30/10/2025",
+        "autor": "professor1@ifce.edu.br"
+    },
+    {
+        "id": 22,
+        "titulo": "Sobreposição de horários de disciplinas",
+        "corpo": "Duas obrigatórias do 4º semestre estão no mesmo horário.",
+        "categoria": "Acadêmico",
+        "data": "31/10/2025",
+        "autor": "aluno11@ifce.edu.br"
+    },
+    {
+        "id": 23,
+        "titulo": "Atraso na publicação das notas",
+        "corpo": "Notas da disciplina de Cálculo 2 não foram lançadas no prazo.",
+        "categoria": "Acadêmico",
+        "data": "31/10/2025",
+        "autor": "aluno12@ifce.edu.br"
+    },
+    {
+        "id": 24,
+        "titulo": "Evento sem intérprete de Libras",
+        "corpo": "Sem acessibilidade na semana acadêmica do curso X.",
+        "categoria": "Eventos/Calendário",
+        "data": "31/10/2025",
+        "autor": "aluno13@ifce.edu.br"
+    },
+    {
+        "id": 25,
+        "titulo": "Divulgação tardia do calendário de provas",
+        "corpo": "Datas das avaliações saíram com apenas 3 dias de antecedência.",
+        "categoria": "Eventos/Calendário",
+        "data": "31/10/2025",
+        "autor": "aluno14@ifce.edu.br"
+    },
+    {
+        "id": 26,
+        "titulo": "Iluminação externa insuficiente",
+        "corpo": "Área do estacionamento 2 fica escura após as 19h.",
+        "categoria": "Segurança",
+        "data": "31/10/2025",
+        "autor": "aluno15@ifce.edu.br"
+    },
+    {
+        "id": 27,
+        "titulo": "Falta de vigilância no portão lateral",
+        "corpo": "Entrada lateral permanece aberta sem controle de acesso.",
+        "categoria": "Segurança",
+        "data": "31/10/2025",
+        "autor": "servidor2@ifce.edu.br"
+    },
+    {
+        "id": 28,
+        "titulo": "Laboratório sem projetor",
+        "corpo": "Sala L-203 sem projetor funcionando para apresentação.",
+        "categoria": "Infraestrutura",
+        "data": "01/11/2025",
+        "autor": "professor2@ifce.edu.br"
+    },
+    {
+        "id": 29,
+        "titulo": "Portas com fechaduras quebradas",
+        "corpo": "Porta da sala 305 do bloco F não tranca.",
+        "categoria": "Infraestrutura",
+        "data": "01/11/2025",
+        "autor": "aluno16@ifce.edu.br"
+    },
+    {
+        "id": 30,
+        "titulo": "Fila excessiva no RU",
+        "corpo": "Espera de mais de 40 minutos no almoço.",
+        "categoria": "Alimentação",
+        "data": "01/11/2025",
+        "autor": "aluno17@ifce.edu.br"
+    },
+    {
+        "id": 31,
+        "titulo": "Comida fria no jantar",
+        "corpo": "Refeições servidas já estavam em temperatura ambiente.",
+        "categoria": "Alimentação",
+        "data": "01/11/2025",
+        "autor": "aluno18@ifce.edu.br"
+    },
+    {
+        "id": 32,
+        "titulo": "Linha externa atrasando diariamente",
+        "corpo": "Ônibus parceiro das 22h atrasa cerca de 20 minutos todos os dias.",
+        "categoria": "Transporte",
+        "data": "01/11/2025",
+        "autor": "aluno19@ifce.edu.br"
+    },
+    {
+        "id": 33,
+        "titulo": "Parada de ônibus sem cobertura",
+        "corpo": "Ponto em frente ao campus sem abrigo para chuva.",
+        "categoria": "Transporte",
+        "data": "01/11/2025",
+        "autor": "aluno20@ifce.edu.br"
+    },
+    {
+        "id": 34,
+        "titulo": "Salas com poeira acumulada",
+        "corpo": "Carteiras e quadros brancos sujos no bloco H.",
+        "categoria": "Limpeza",
+        "data": "01/11/2025",
+        "autor": "aluno21@ifce.edu.br"
+    },
+    {
+        "id": 35,
+        "titulo": "Coletores de recicláveis sem identificação",
+        "corpo": "Lixeiras coloridas sem etiquetas dificultam a separação.",
+        "categoria": "Limpeza",
+        "data": "01/11/2025",
+        "autor": "aluno22@ifce.edu.br"
+    },
+    {
+        "id": 36,
+        "titulo": "Impressão cobrando em duplicidade",
+        "corpo": "Sistema de impressão debitou 2x pelo mesmo arquivo.",
+        "categoria": "TI/Portais",
+        "data": "02/11/2025",
+        "autor": "aluno23@ifce.edu.br"
+    },
+    {
+        "id": 37,
+        "titulo": "Moodle com links quebrados",
+        "corpo": "Materiais da disciplina apontam para 404.",
+        "categoria": "TI/Portais",
+        "data": "02/11/2025",
+        "autor": "aluno24@ifce.edu.br"
+    },
+    {
+        "id": 38,
+        "titulo": "Conflito na oferta de optativas",
+        "corpo": "Optativas abertas simultaneamente para o mesmo público.",
+        "categoria": "Acadêmico",
+        "data": "02/11/2025",
+        "autor": "aluno25@ifce.edu.br"
+    },
+    {
+        "id": 39,
+        "titulo": "Dificuldade para validação de horas complementares",
+        "corpo": "Formulário do portal não permite anexar certificados.",
+        "categoria": "Acadêmico",
+        "data": "02/11/2025",
+        "autor": "aluno26@ifce.edu.br"
+    },
+    {
+        "id": 40,
+        "titulo": "Divulgação tardia de feriado no calendário",
+        "corpo": "Alteração publicada em cima da hora causou confusão.",
+        "categoria": "Eventos/Calendário",
+        "data": "02/11/2025",
+        "autor": "servidor3@ifce.edu.br"
+    },
+    {
+        "id": 41,
+        "titulo": "Troca de sala sem aviso",
+        "corpo": "Aula transferida para outro bloco sem notificação prévia.",
+        "categoria": "Eventos/Calendário",
+        "data": "02/11/2025",
+        "autor": "aluno27@ifce.edu.br"
+    },
+    {
+        "id": 42,
+        "titulo": "Câmeras sem gravação",
+        "corpo": "CFTV do corredor do bloco C está desligado.",
+        "categoria": "Segurança",
+        "data": "02/11/2025",
+        "autor": "servidor4@ifce.edu.br"
+    },
+    {
+        "id": 43,
+        "titulo": "Extintores vencidos",
+        "corpo": "Sinalização indica recarga vencida em setembro.",
+        "categoria": "Segurança",
+        "data": "02/11/2025",
+        "autor": "aluno28@ifce.edu.br"
+    },
+    {
+        "id": 44,
+        "titulo": "Tomadas soltas no laboratório",
+        "corpo": "Várias tomadas sem espelho de proteção na L-105.",
+        "categoria": "Infraestrutura",
+        "data": "03/11/2025",
+        "autor": "aluno29@ifce.edu.br"
+    },
+    {
+        "id": 45,
+        "titulo": "Quadro branco manchado",
+        "corpo": "Mesmo após limpeza, o quadro permanece ilegível.",
+        "categoria": "Infraestrutura",
+        "data": "03/11/2025",
+        "autor": "professor3@ifce.edu.br"
+    },
+    {
+        "id": 46,
+        "titulo": "Talheres descartáveis insuficientes",
+        "corpo": "Faltaram garfos e colheres no almoço de hoje.",
+        "categoria": "Alimentação",
+        "data": "03/11/2025",
+        "autor": "aluno30@ifce.edu.br"
+    },
+    {
+        "id": 47,
+        "titulo": "Higiene duvidosa na salada",
+        "corpo": "Folhas com terra e gosto amargo.",
+        "categoria": "Alimentação",
+        "data": "03/11/2025",
+        "autor": "aluno31@ifce.edu.br"
+    },
+    {
+        "id": 48,
+        "titulo": "Transporte sem acessibilidade",
+        "corpo": "Ônibus interno não possui elevador para cadeirantes.",
+        "categoria": "Transporte",
+        "data": "03/11/2025",
+        "autor": "aluno32@ifce.edu.br"
+    },
+    {
+        "id": 49,
+        "titulo": "Rota alterada sem aviso",
+        "corpo": "Mudança no itinerário do circular causou atrasos.",
+        "categoria": "Transporte",
+        "data": "03/11/2025",
+        "autor": "aluno33@ifce.edu.br"
+    },
+    {
+        "id": 50,
+        "titulo": "Sala de estudos com cheiro forte",
+        "corpo": "Ambiente fechado sem ventilação adequada no subsolo.",
+        "categoria": "Limpeza",
+        "data": "03/11/2025",
+        "autor": "aluno34@ifce.edu.br"
+    },
+    {
+        "id": 51,
+        "titulo": "Coleta seletiva irregular",
+        "corpo": "Catadores misturando reciclável e orgânico na retirada.",
+        "categoria": "Limpeza",
+        "data": "03/11/2025",
+        "autor": "aluno35@ifce.edu.br"
+    },
+    {
+        "id": 52,
+        "titulo": "Erro no boleto de taxa",
+        "corpo": "Valor duplicado no portal financeiro estudantil.",
+        "categoria": "TI/Portais",
+        "data": "04/11/2025",
+        "autor": "aluno36@ifce.edu.br"
+    },
+    {
+        "id": 53,
+        "titulo": "E-mail institucional com atraso de entrega",
+        "corpo": "Mensagens demoram mais de 1h para chegar.",
+        "categoria": "TI/Portais",
+        "data": "04/11/2025",
+        "autor": "servidor5@ifce.edu.br"
+    },
+    {
+        "id": 54,
+        "titulo": "Ementa não corresponde ao conteúdo",
+        "corpo": "Conteúdo programático em sala diverge do plano publicado.",
+        "categoria": "Acadêmico",
+        "data": "04/11/2025",
+        "autor": "aluno37@ifce.edu.br"
+    },
+    {
+        "id": 55,
+        "titulo": "Dificuldade em trancamento de disciplina",
+        "corpo": "Fluxo no portal não conclui a solicitação.",
+        "categoria": "Acadêmico",
+        "data": "04/11/2025",
+        "autor": "aluno38@ifce.edu.br"
+    },
+    {
+        "id": 56,
+        "titulo": "Semana acadêmica sem cronograma detalhado",
+        "corpo": "Faltam horários e salas nas postagens do evento.",
+        "categoria": "Eventos/Calendário",
+        "data": "04/11/2025",
+        "autor": "aluno39@ifce.edu.br"
+    },
+    {
+        "id": 57,
+        "titulo": "Cancelamento de aula sem reposição",
+        "corpo": "Quarta falta seguida sem plano de reposição anunciado.",
+        "categoria": "Eventos/Calendário",
+        "data": "04/11/2025",
+        "autor": "aluno40@ifce.edu.br"
+    },
+    {
+        "id": 58,
+        "titulo": "Assédio verbal no estacionamento",
+        "corpo": "Ocorrência sem atendimento rápido da segurança.",
+        "categoria": "Segurança",
+        "data": "04/11/2025",
+        "autor": "aluno41@ifce.edu.br"
+    },
+    {
+        "id": 59,
+        "titulo": "Carros em vagas de bicicleta",
+        "corpo": "Falta de fiscalização nas vagas exclusivas.",
+        "categoria": "Segurança",
+        "data": "04/11/2025",
+        "autor": "aluno42@ifce.edu.br"
+    },
+    {
+        "id": 60,
+        "titulo": "Biblioteca com cadeiras quebradas",
+        "corpo": "Várias cadeiras com encosto solto no 2º andar.",
+        "categoria": "Infraestrutura",
+        "data": "05/11/2025",
+        "autor": "aluno43@ifce.edu.br"
+    },
+    {
+        "id": 61,
+        "titulo": "Laboratório sem reagentes básicos",
+        "corpo": "Falta de álcool e indicadores para prática.",
+        "categoria": "Infraestrutura",
+        "data": "05/11/2025",
+        "autor": "professor4@ifce.edu.br"
+    },
+    {
+        "id": 62,
+        "titulo": "Sobremesa azeda",
+        "corpo": "Iogurte servido no almoço parecia fora da validade.",
+        "categoria": "Alimentação",
+        "data": "05/11/2025",
+        "autor": "aluno44@ifce.edu.br"
+    },
+    {
+        "id": 63,
+        "titulo": "Cozinha sem luvas descartáveis",
+        "corpo": "Equipe manipulando alimentos sem EPI adequado.",
+        "categoria": "Alimentação",
+        "data": "05/11/2025",
+        "autor": "aluno45@ifce.edu.br"
+    },
+    {
+        "id": 64,
+        "titulo": "Aplicativo do ônibus não atualiza",
+        "corpo": "Horários no app não batem com a operação real.",
+        "categoria": "Transporte",
+        "data": "05/11/2025",
+        "autor": "aluno46@ifce.edu.br"
+    },
+    {
+        "id": 65,
+        "titulo": "Motorista usando celular",
+        "corpo": "Flagrado durante o trajeto interno do campus.",
+        "categoria": "Transporte",
+        "data": "05/11/2025",
+        "autor": "aluno47@ifce.edu.br"
+    },
+    {
+        "id": 66,
+        "titulo": "Sala de aula com odor de mofo",
+        "corpo": "Ambiente causa alergia em alguns estudantes.",
+        "categoria": "Limpeza",
+        "data": "05/11/2025",
+        "autor": "aluno48@ifce.edu.br"
+    },
+    {
+        "id": 67,
+        "titulo": "Pisos do corredor engordurados",
+        "corpo": "Risco de queda próximo ao RU no final do dia.",
+        "categoria": "Limpeza",
+        "data": "05/11/2025",
+        "autor": "aluno49@ifce.edu.br"
+    },
+    {
+        "id": 68,
+        "titulo": "Sala virtual sem gravações",
+        "corpo": "Links para gravações das aulas não aparecem no portal.",
+        "categoria": "TI/Portais",
+        "data": "05/11/2025",
+        "autor": "aluno50@ifce.edu.br"
+    },
+    {
+        "id": 69,
+        "titulo": "Cadastro de estágio com erro",
+        "corpo": "Formulário retorna exceção ao salvar supervisor.",
+        "categoria": "TI/Portais",
+        "data": "05/11/2025",
+        "autor": "aluno51@ifce.edu.br"
+    },
+    {
+        "id": 70,
+        "titulo": "Orientador indisponível na matrícula",
+        "corpo": "Sistema impede escolha de orientador de TCC.",
+        "categoria": "Acadêmico",
+        "data": "05/11/2025",
+        "autor": "aluno52@ifce.edu.br"
+    },
+    {
+        "id": 71,
+        "titulo": "Diplomas sem prazo informado",
+        "corpo": "Ausência de previsão de entrega no setor acadêmico.",
+        "categoria": "Acadêmico",
+        "data": "05/11/2025",
+        "autor": "aluno53@ifce.edu.br"
+    },
+    {
+        "id": 72,
+        "titulo": "Cerimônia adiada sem justificativa",
+        "corpo": "Formatura remarcada duas vezes sem explicação.",
+        "categoria": "Eventos/Calendário",
+        "data": "05/11/2025",
+        "autor": "aluno54@ifce.edu.br"
+    },
+    {
+        "id": 73,
+        "titulo": "Workshop sem limite de vagas definido",
+        "corpo": "Superlotação durante atividade no auditório.",
+        "categoria": "Eventos/Calendário",
+        "data": "05/11/2025",
+        "autor": "aluno55@ifce.edu.br"
+    },
+    {
+        "id": 74,
+        "titulo": "Acesso indevido a prédio",
+        "corpo": "Pessoa sem crachá circulando em área restrita.",
+        "categoria": "Segurança",
+        "data": "05/11/2025",
+        "autor": "servidor6@ifce.edu.br"
+    },
+    {
+        "id": 75,
+        "titulo": "Saída de emergência obstruída",
+        "corpo": "Cadeiras bloqueando a porta do auditório.",
+        "categoria": "Segurança",
+        "data": "05/11/2025",
+        "autor": "aluno56@ifce.edu.br"
+    },
+    {
+        "id": 76,
+        "titulo": "Vazamento no teto do corredor",
+        "corpo": "Goteiras próximas às salas 201-205 do bloco E.",
+        "categoria": "Infraestrutura",
+        "data": "05/11/2025",
+        "autor": "aluno57@ifce.edu.br"
+    },
+    {
+        "id": 77,
+        "titulo": "Porta de vidro sem sinalização",
+        "corpo": "Risco de colisão na entrada do bloco A.",
+        "categoria": "Infraestrutura",
+        "data": "05/11/2025",
+        "autor": "aluno58@ifce.edu.br"
+    },
+    {
+        "id": 78,
+        "titulo": "Cardápio sem informações de alergênicos",
+        "corpo": "Ausência de indicação de glúten e lactose.",
+        "categoria": "Alimentação",
+        "data": "05/11/2025",
+        "autor": "aluno59@ifce.edu.br"
+    },
+    {
+        "id": 79,
+        "titulo": "Água do suco muito açucarada",
+        "corpo": "Bebida do RU extremamente doce, sem opção sem açúcar.",
+        "categoria": "Alimentação",
+        "data": "05/11/2025",
+        "autor": "aluno60@ifce.edu.br"
+    },
+    {
+        "id": 80,
+        "titulo": "Parada final do circular sem iluminação",
+        "corpo": "Local escuro ao lado do ginásio após 21h.",
+        "categoria": "Transporte",
+        "data": "05/11/2025",
+        "autor": "aluno61@ifce.edu.br"
+    },
+    {
+        "id": 81,
+        "titulo": "Produtos de limpeza com cheiro forte",
+        "corpo": "Cheiro persistente de amônia na biblioteca.",
+        "categoria": "Limpeza",
+        "data": "05/11/2025",
+        "autor": "aluno62@ifce.edu.br"
+    },
+    {
+        "id": 82,
+        "titulo": "Portal travando ao gerar declaração",
+        "corpo": "Erro ao emitir declaração de matrícula em PDF.",
+        "categoria": "TI/Portais",
+        "data": "05/11/2025",
+        "autor": "aluno63@ifce.edu.br"
+    },
+    {
+        "id": 83,
+        "titulo": "Plano de ensino não disponível",
+        "corpo": "Documento não aparece para a turma 2025.2.",
+        "categoria": "Acadêmico",
+        "data": "05/11/2025",
+        "autor": "aluno64@ifce.edu.br"
+    },
+    {
+        "id": 84,
+        "titulo": "Mudança de data de prova em cima da hora",
+        "corpo": "Avaliação adiantada sem consulta aos estudantes.",
+        "categoria": "Eventos/Calendário",
+        "data": "05/11/2025",
+        "autor": "aluno65@ifce.edu.br"
+    },
+    {
+        "id": 85,
+        "titulo": "Furto de capacete no bicicletário",
+        "corpo": "Aconteceu hoje às 18h, sem câmera no local.",
+        "categoria": "Segurança",
+        "data": "05/11/2025",
+        "autor": "aluno66@ifce.edu.br"
+    },
+    {
+        "id": 86,
+        "titulo": "Tomógrafo do laboratório de pesquisa parado",
+        "corpo": "Equipamento inoperante por falta de manutenção.",
+        "categoria": "Infraestrutura",
+        "data": "05/11/2025",
+        "autor": "pesquisador1@ifce.edu.br"
+    },
+    {
+        "id": 87,
+        "titulo": "Falta de bandejas no RU",
+        "corpo": "Muitos alunos comendo em pé por falta de bandeja.",
+        "categoria": "Alimentação",
+        "data": "05/11/2025",
+        "autor": "aluno67@ifce.edu.br"
+    },
+    {
+        "id": 88,
+        "titulo": "Aplicativo do RU não mostra saldo",
+        "corpo": "Saldo do auxílio-alimentação aparece zerado.",
+        "categoria": "TI/Portais",
+        "data": "05/11/2025",
+        "autor": "aluno68@ifce.edu.br"
+    },
+    {
+        "id": 89,
+        "titulo": "Certificados de evento não emitidos",
+        "corpo": "Participantes aguardam há 15 dias pela emissão.",
+        "categoria": "Eventos/Calendário",
+        "data": "05/11/2025",
+        "autor": "aluno69@ifce.edu.br"
+    },
+    {
+        "id": 90,
+        "titulo": "Ronda de segurança não atende chamada",
+        "corpo": "Telefone informado toca e não atende no período noturno.",
+        "categoria": "Segurança",
+        "data": "05/11/2025",
+        "autor": "aluno70@ifce.edu.br"
     }
 ]

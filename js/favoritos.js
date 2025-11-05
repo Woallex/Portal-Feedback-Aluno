@@ -8,7 +8,6 @@ document.getElementById("btnVoltar").addEventListener("click", function () {
   window.location.href = "home.html";
 });
 
-
 const container = document.getElementById("favoritosContainer");
 const userEmail = localStorage.getItem("userEmail");
 
@@ -16,8 +15,10 @@ async function carregarFavoritos() {
   try {
     const response = await fetch("http://127.0.0.1:5000/favoritos", {
       method: "GET",
-      headers: { "Content-Type": "application/json" },
-      credentials: "include"
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("token") || ""}`
+      }
     });
 
     const result = await response.json();
@@ -72,8 +73,10 @@ function renderizarFavoritos(favoritos, userEmail) {
       try {
         const desfav = await fetch(`http://127.0.0.1:5000/favoritos/${pub.id}`, {
           method: "DELETE",
-          headers: { "Content-Type": "application/json" },
-          credentials: "include"
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${localStorage.getItem("token") || ""}`
+          }
         });
 
         const resultado = await desfav.json();

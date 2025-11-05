@@ -1,57 +1,46 @@
-.menu-flutuante {
-  position: fixed;
-  bottom: 30px;
-  right: 30px;
-  z-index: 100;
-  display: flex;
-  flex-direction: column-reverse;
-  align-items: flex-end;
+.menu-flutuante{
+  position:fixed;
+  bottom:clamp(16px, 3vh, 30px);
+  right:clamp(16px, 4vw, 30px);
+  z-index:1100;
+  display:flex; flex-direction:column-reverse; align-items:flex-end;
+  padding-bottom:env(safe-area-inset-bottom);
 }
 
-.btn-flutuante {
-  background-color: #008037;
-  color: #fff;
-  font-size: 32px;
-  font-weight: bold;
-  border: none;
-  border-radius: 50%;
-  width: 65px;
-  height: 65px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-  cursor: pointer;
-  transition: background-color 0.3s;
-  margin-top: 12px; 
+.btn-flutuante{
+  background-color:#008037;
+  color:#fff;
+  font-size:32px; font-weight:700;
+  border:none; border-radius:50%;
+  width:65px; height:65px;
+  box-shadow:0 6px 16px rgba(0,0,0,.25);
+  cursor:pointer; transition:transform .15s, background-color .2s, box-shadow .2s;
+  margin-top:12px;
 }
+.btn-flutuante:hover{background-color:#00a84d; transform:translateY(-1px)}
+.btn-flutuante:active{transform:translateY(0); box-shadow:0 3px 10px rgba(0,0,0,.25)}
+.btn-flutuante:focus-visible{outline:3px solid rgba(0,168,77,.4); outline-offset:3px}
 
-.btn-flutuante:hover {
-  background-color: #00a84d;
+.acoes{
+  display:flex; flex-direction:column; gap:10px; align-items:flex-end; transition:opacity .2s ease;
 }
-
-.acoes {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  align-items: flex-end;
-  transition: opacity 0.3s ease;
+.acao-btn{
+  background:#fff;
+  color:#008037;
+  border:2px solid #008037;
+  padding:10px 20px;
+  border-radius:30px;
+  font-weight:600;
+  cursor:pointer;
+  box-shadow:0 2px 8px rgba(0,0,0,.12);
+  transition:background .2s, transform .1s, box-shadow .2s;
 }
+.acao-btn:hover{background:#f5fff8; transform:translateY(-1px)}
+.acao-btn:active{transform:translateY(0)}
+.acao-btn:focus-visible{outline:3px solid rgba(0,168,77,.35); outline-offset:3px}
 
-.acao-btn {
-  background-color: #f0f0f0;
-  color: #008037;
-  border: 2px solid #008037;
-  padding: 10px 20px;
-  border-radius: 30px;
-  font-weight: 500;
-  cursor: pointer;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-  transition: background-color 0.3s, transform 0.2s;
-}
+.hidden{display:none}
 
-.acao-btn:hover {
-  background-color: #e0e0e0;
-  transform: scale(1.03);
-}
-
-.hidden {
-  display: none;
+@media (max-width: 480px){
+  .btn-flutuante{width:58px;height:58px;font-size:28px}
 }

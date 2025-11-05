@@ -13,7 +13,6 @@ document.getElementById("cadastroForm").addEventListener("submit", async functio
     const response = await fetch("http://127.0.0.1:5000/usuarios", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      credentials: "include",
       body: JSON.stringify({ login: email, senha: password })
     });
 
@@ -25,7 +24,7 @@ document.getElementById("cadastroForm").addEventListener("submit", async functio
 
     const data = await response.json();
     alert("Cadastro realizado com sucesso!");
-    window.location.href = "index.html"; // redireciona para login
+    window.location.href = "index.html";
   } catch (error) {
     console.error("Erro:", error);
     alert("Erro ao conectar com o servidor.");

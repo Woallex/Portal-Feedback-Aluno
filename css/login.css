@@ -1,62 +1,44 @@
-body {
-  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+body{
+  min-height:100vh;
+  margin:0;
+  background:
+    linear-gradient(rgba(0,0,0,.55), rgba(0,0,0,.55)),
     url("https://upload.wikimedia.org/wikipedia/commons/0/0c/Campus_IFCE_Crato.jpg") center/cover no-repeat;
-  height: 100px;
-  font-family: 'Poppins', sans-serif;
+  font-family:'Poppins',system-ui,-apple-system,Segoe UI,Roboto,Arial,Helvetica,sans-serif;
+  display:flex; align-items:center; justify-content:center;
 }
 
-.login-box {
-  background: #fff;
-  backdrop-filter: blur(8px);
-  width: 350px;
-  color: #000;
+.login-box{
+  background:#fff;
+  width:min(92vw, 380px);
+  color:#000;
+  border-radius:18px;
+  padding:24px 22px;
+  box-shadow:0 10px 30px rgba(0,0,0,.25);
 }
 
-.logo-ifce {
-  width: 200px;
-  height: auto;
-}
+.logo-ifce{width:200px;height:auto;margin:0 auto 8px}
 
-.form-control {
-  background: #f0eded;
-  border-radius: 8px;
+.form-control{
+  background:#f4f4f4;
+  border:1px solid #e3e3e3;
+  border-radius:10px;
 }
+.form-control::placeholder{color:#9c9c9c}
 
-.form-control::placeholder {
-  color: #bdb6b6;
+.btn-success{
+  background-color:#008037; border:none; transition:background .2s, box-shadow .2s;
+  border-radius:10px; padding:.6rem 1rem;
 }
+.btn-success:hover{background-color:#00a84d; box-shadow:0 6px 16px rgba(0,0,0,.2)}
+.btn-success:focus-visible{outline:3px solid rgba(0,168,77,.35); outline-offset:3px}
 
-.btn-success {
-  background-color: #008037;
-  border: none;
-  transition: 0.3s;
+.btn-voltar{
+  position:absolute; top:20px; left:20px;
+  background-color:#dff0d8; border:none; border-radius:50%;
+  width:50px; height:50px; display:flex; justify-content:center; align-items:center;
+  box-shadow:0 2px 8px rgba(0,0,0,.25); transition:background .2s, transform .1s;
 }
-
-.btn-success:hover {
-  background-color: #00a84d;
-}
-
-.btn-voltar {
-  position: absolute;
-  top: 20px;
-  left: 20px;
-  background-color: #dff0d8;
-  border: none;
-  border-radius: 50%;
-  width: 50px;
-  height: 50px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-  transition: background-color 0.3s;
-}
-
-.btn-voltar:hover {
-  background-color: #c8e5bc;
-}
-
-.btn-voltar img {
-  width: 65px;
-  height: 65px;
-}
+.btn-voltar:hover{background-color:#c8e5bc; transform:translateY(-1px)}
+.btn-voltar:focus-visible{outline:3px solid rgba(0,168,77,.35); outline-offset:3px}
+.btn-voltar img{width:28px;height:28px}
