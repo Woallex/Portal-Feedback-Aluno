@@ -1,6 +1,6 @@
 from flask import Flask, request, jsonify, session
 import json
-import os
+import os, base64
 from datetime import datetime
 from flask_cors import CORS
 
@@ -65,6 +65,25 @@ def load_complaints():
             complaints = json.load(f)
         except json.JSONDecodeError:
             complaints = []
+
+@app.route('/images', methods=['GET'])
+def get_image():
+    nome = request.args.get('nome')
+    if not nome:
+        return jsonify(ok=False, data=None, error="Parâmetro 'nome' não fornecido")
+
+    ext = os.path.splitext(nome)[1].lower()
+    if ext not in {'.jpg', '.jpeg', '.png', '.webp', '.gif', '.svg'}:
+        return jsonify(ok=False, data=None, error="Extensão inválida")
+
+    image_path = os.path.join(app.root_path, 'imagens', nome)
+    if not os.path.exists(image_path):
+        return jsonify(ok=False, data=None, error="Arquivo não encontrado")
+
+    with open(image_path, 'rb') as f:
+        encoded = base64.b64encode(f.read()).decode('utf-8')
+
+    return jsonify(ok=True, data={'base64': encoded}, error=None)
 
 # Rota: Criar novo usuário
 @app.route('/usuarios', methods=['POST'])
