@@ -1,0 +1,22 @@
+[
+    {
+        "id": 1,
+        "login": "aluno1@ifce.edu.br",
+        "senha": "123",
+        "favoritos": [
+            20,
+            26,
+            27
+        ]
+    },
+    {
+        "id": 2,
+        "login": "aluno2@ifce.edu.br",
+        "senha": "123",
+        "favoritos": [
+            1,
+            3,
+            7
+        ]
+    }
+]
