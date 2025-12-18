@@ -21,7 +21,7 @@ function CriarPublicacaoPage() {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
     // ✅ NOVO ESTADO: Para exibir a mensagem de sucesso antes do redirecionamento
-    const [success, setSuccess] = useState(false);
+    const [success] = useState(false);
 
     // Data formatada para exibir (como no seu JS original)
     const dataAtual = new Date().toLocaleDateString("pt-BR");

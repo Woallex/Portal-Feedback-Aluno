@@ -22,15 +22,15 @@ function MenuFlutuante() {
         <div style={menuStyle}>
             {/* Opções do Menu */}
             {isOpen && (
-                <Nav className="flex-column mb-2 align-items-end gap-2">
+                <Nav className="flex-column mb-2 gap-2">
                     <Button 
-                        variant="primary" 
+                        variant="success" 
                         onClick={() => navigate('/publicar')}
                     >
                         <FaEdit className="me-2" /> Criar Publicação
                     </Button>
                     <Button 
-                        variant="danger" 
+                        variant="success" 
                         onClick={() => navigate('/favoritos')}
                     >
                         <FaStar className="me-2" /> Ver Favoritos

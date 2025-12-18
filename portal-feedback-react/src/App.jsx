@@ -41,7 +41,7 @@ function App() {
                 {/* 2. Rotas Protegidas: O elemento renderizado é o ProtectedLayout, 
                        que por sua vez renderiza o Header e a Página (element) */}
                 <Route path="/" element={<ProtectedLayout element={<HomePage />} />} />
-                <Route path="/publicar" element={<ProtectedLayout element={<CriarPublicacaoPage />} />} />
+                <Route path="/publicar" element={<CriarPublicacaoPage />} />
                 <Route path="/favoritos" element={<ProtectedLayout element={<FavoritosPage />} />} />
                 
                 {/* Rota 404 */}

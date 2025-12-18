@@ -1,5 +1,5 @@
 import { Navbar, Container, Button } from 'react-bootstrap'; // Requisito 2: React Bootstrap
-import { FaSignOutAlt, FaHome, FaHeart, FaPlus } from 'react-icons/fa'; // Requisito 5: React Icons
+import { FaSignOutAlt, FaDoorOpen} from 'react-icons/fa'; // Requisito 5: React Icons
 import { useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 import LogoIFCE from '../../../img/logo-if.png'
@@ -48,7 +48,7 @@ function Header() {
                             onClick={() => navigate('/')}
                             title="Voltar para Home"
                         >
-                            <FaHome className="me-1" /> Home
+                            <FaDoorOpen className="me-1" /> Voltar
                         </Button>
                     )}
                     

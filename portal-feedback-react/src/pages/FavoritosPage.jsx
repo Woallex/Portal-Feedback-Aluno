@@ -1,6 +1,5 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { Container, Row, Col, Spinner, Alert } from 'react-bootstrap';
-import { FaHeart } from 'react-icons/fa'; // Requisito 5: React Icons
 import { apiFetch } from '../utils/api'; // Requisito 4
 import { useAuth } from '../contexts/AuthContext';
 import NavCategorias from '../components/NavCategorias';
@@ -71,7 +70,7 @@ function FavoritosPage() {
 
 
     return (
-        <div style={{ minHeight: '100vh', paddingBottom: '80px' }}>
+        <div style={{ minHeight: '100vh', paddingBottom: '80px', backgroundColor: '#f8f9fa' }}>
             {/* O NavCategorias será exibido, mas sem funcionalidade real de filtro no backend /favoritos */}
             <NavCategorias 
                 categoriaAtiva={activeCategory} 
