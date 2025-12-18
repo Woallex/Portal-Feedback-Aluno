@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { Alert, Button, Card, Container, Form } from 'react-bootstrap';
 import { FaLock, FaUser } from 'react-icons/fa';
 import { Link, useNavigate } from 'react-router-dom';
-import LogoIFCE from '../../../img/logo-if.png';
+import LogoIFCE from '../../img/logo-if.png';
 import { useAuth } from '../contexts/AuthContext';
 
 function LoginPage() {

@@ -214,5 +214,13 @@
         "categoria": "Infraestrutura",
         "data": "16/12/2025",
         "autor": "aluno1@ifce.edu.br"
+    },
+    {
+        "id": 28,
+        "titulo": "Ultimo teste",
+        "corpo": "Tudo pronto agora falta subir para o Vercel.",
+        "categoria": "Segurança",
+        "data": "17/12/2025",
+        "autor": "aluno1@ifce.edu.br"
     }
 ]

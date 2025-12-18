@@ -1,27 +1,16 @@
-# Portal Feedback - IFCE
+# React + Vite
 
-Sistema de gestão de feedbacks acadêmicos em desenvolvimento para o Instituto Federal do Ceará campos Crato. O projeto permite que alunos façam puclicações categorizadas e gerenciem seus favoritos.
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-## 🚀 Características
+Currently, two official plugins are available:
 
-* **Autenticação**: Sistema de login e cadastro de usuários com persistência em sessão.
-* **Publicações**: Criação de reclamações com título, descrição, categoria.
-* **Categorização**: Filtragem de publicações por categorias como Infraestrutura, TI, Acadêmico, etc..
-* **Favoritos**: Opção para marcar/desmarcar publicações como favoritas em tempo real.
-* **Interface Responsiva**: Layout institucional desenvolvido com React Bootstrap e ícones intuitivos.
-* **Persistência de Dados**: Armazenamento em arquivos JSON no servidor Flask.
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-## 🛠️ Stack Tecnológico
+## React Compiler
 
-### Frontend
-* **ReactJS**: Biblioteca principal para construção da interface.
-* **React Bootstrap**: Framework de componentes para estilização e layout.
-* **React Router Dom**: Gerenciamento de rotas e navegação SPA.
-* **React Icons**: Biblioteca de ícones (Font Awesome).
-* **Vite**: Ferramenta de build e servidor de desenvolvimento.
+The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
 
-### Backend
-* **Python**: Linguagem de programação do servidor.
-* **Flask**: Micro-framework para criação da API REST.
-* **Flask-CORS**: Gerenciamento de permissões de acesso entre o React e a API.
-* **JSON**: Utilizado como "banco de dados" para usuários e reclamações.
+## Expanding the ESLint configuration
+
+If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.

@@ -2,7 +2,7 @@ import { Navbar, Container, Button } from 'react-bootstrap'; // Requisito 2: Rea
 import { FaSignOutAlt, FaDoorOpen} from 'react-icons/fa'; // Requisito 5: React Icons
 import { useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
-import LogoIFCE from '../../../img/logo-if.png'
+import LogoIFCE from '../../img/logo-if.png'
 
 function Header() {
     const { logout, user } = useAuth();
