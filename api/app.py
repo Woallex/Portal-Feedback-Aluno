@@ -7,8 +7,8 @@ from datetime import datetime
 app = Flask(__name__)
 CORS(
     app,
-    resources={r"/api/*": {"origins": "*"}},
-    supports_credentials=True
+    supports_credentials=True,
+    origins=["http://localhost:5173"]
 )
 
 app.config.update(
@@ -382,5 +382,3 @@ def listar_favoritos():
 # Inicializa o servidor Flask apenas se este arquivo for executado diretamente
 if __name__ == '__main__':
     app.run(debug=True)
-
-app = app # Isso ajuda a Vercel a localizar a instância do Flask

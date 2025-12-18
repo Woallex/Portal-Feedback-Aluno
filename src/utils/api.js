@@ -1,6 +1,6 @@
 // URL base da sua API Flask. 
 // Certifique-se de que a API Python está rodando em http://127.0.0.1:5000 (padrão do Flask)
-const API_BASE_URL = import.meta.env.VITE_API_URL || '/api';
+const API_BASE_URL = 'http://localhost:5000';
 
 /**
  * Função utilitária para fazer requisições à API.
