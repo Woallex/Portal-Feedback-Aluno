@@ -1,16 +1,49 @@
-# React + Vite
+# Portal Feedback - IFCE
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Sistema de gestão de feedbacks** acadêmicas em desenvolvimento para o Instituto Federal do Ceará campo Crato. O projeto permite que alunos façam publicações categorizadase e gerenciem seus favoritos.
 
-Currently, two official plugins are available:
+## 🚀 Características
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+-   * **Autenticação**: Sistema de login e cadastro de usuários com persistência em sessão.
+-   * **Publicações**: Criação de reclamações com título, descrição, categoria e data.
+-   * **Categorização**: Filtragem de publicações por categorias como Infraestrutura, TI, Acadêmico, etc..
+-   * **Favoritos**: Opção para marcar/desmarcar publicações como favoritas em tempo real.
+-   * **Interface Responsiva**: Layout moderno desenvolvido com React Bootstrap e ícones intuitivos.
+-   * **Persistência de Dados**: Armazenamento em arquivos JSON no servidor Flask.
 
-## React Compiler
+## 🛠️ Stack Tecnológico
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### Frontend
+-   * **ReactJS**: Biblioteca principal para construção da interface.
+-   * **React Bootstrap**: Framework de componentes para estilização e layout.
+-   * **React Router Dom**: Gerenciamento de rotas e navegação SPA.
+-   * **React Icons**: Biblioteca de ícones (Font Awesome).
+-   * **Vite**: Ferramenta de build e servidor de desenvolvimento.
 
-## Expanding the ESLint configuration
+### Backend
+-   * **Python com Flask**: Servidor responsável pelas rotas de API e lógica da aplicação.
+-   * **Flask-CORS**: Gerenciamento de permissões de acesso entre o React e a API.
+-   * **JSON**: Utilizado como "banco de dados" para usuários e reclamações.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 🔧 Como rodar o projeto
+
+### 1. Preparar o Backend (API)
+Navegue até a pasta `api` e execute o servidor Python:
+```bash
+cd api
+python app.py
+```
+
+### 2. Iniciar o Frontend
+```bash
+Na raiz do projeto, instale as dependências e rode o Vite:
+npm install
+npm run dev
+```
+
+## ☁️ Deploy (Vercel)
+```bash
+O projeto está otimizado para deploy na Vercel:
+-   As rotas de /api são mapeadas automaticamente para o backend Python através do arquivo vercel.json.
+-   O frontend React é compilado e servido de forma otimizada pelo Vite.
+```
