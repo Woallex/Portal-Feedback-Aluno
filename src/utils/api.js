@@ -1,4 +1,5 @@
-const API_BASE_URL = import.meta.env.VITE_API_URL || "https://api-portal-feedback.onrender.com";
+const API_BASE_URL = "https://api-portal-feedback.onrender.com";
+;
 
 /**
  * Função utilitária para fazer requisições à API.
