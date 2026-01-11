@@ -1,4 +1,4 @@
-const API_BASE_URL = "https://api-portal-feedback.onrender.com";
+const API_BASE_URL = '/api';
 
 export async function apiFetch(endpoint, options = {}) {
     const url = `${API_BASE_URL}${endpoint}`;
