@@ -1,14 +1,14 @@
 import { useState } from 'react';
 import { Alert, Button, Card, Container, Form } from 'react-bootstrap';
-import { FaLock, FaUser, FaUserPlus } from 'react-icons/fa'; // Ícones para Cadastro
+import { FaLock, FaUser, FaUserPlus } from 'react-icons/fa';
 import { Link, useNavigate } from 'react-router-dom';
-import { useAuth } from '../contexts/AuthContext'; // Para redirecionar se já estiver logado
+import { useAuth } from '../contexts/AuthContext';
 import { apiFetch } from '../utils/api';
 
 function CadastroPage() {
     const [loginInput, setLoginInput] = useState('');
     const [senhaInput, setSenhaInput] = useState('');
-    const [confirmarSenha, setConfirmarSenha] = useState(''); // Campo adicional de Confirmação
+    const [confirmarSenha, setConfirmarSenha] = useState('');
     const [error, setError] = useState(null);
     const [success, setSuccess] = useState(false);
     const [isSubmitting, setIsSubmitting] = useState(false);
@@ -16,7 +16,6 @@ function CadastroPage() {
     const navigate = useNavigate();
     const { isLoggedIn } = useAuth();
 
-    // Redireciona para Home se o usuário já estiver logado
     if (isLoggedIn) {
         navigate('/');
         return null;
@@ -42,8 +41,6 @@ function CadastroPage() {
         if (ok) {
             setSuccess(true);
             setError(null);
-
-            // Limpa o formulário e redireciona para o login após 2 segundos
             setTimeout(() => {
                 navigate('/login');
             }, 2000);
@@ -55,12 +52,8 @@ function CadastroPage() {
     };
 
     return (
-        // Layout de centralização (igual ao LoginPage)
         <Container className="d-flex justify-content-center align-items-center vh-100">
-            {/* Classe login-box para o estilo da caixa */}
             <Card className="login-box p-4 shadow-lg rounded-4">
-
-                {/* Cabeçalho do Card (com ícone e título, replicando o visual da sua imagem) */}
                 <Card.Header className="text-center bg-success text-white rounded-top">
                     <h3 className="mb-0"><FaUserPlus className="me-2" /> Novo Cadastro</h3>
                 </Card.Header>
@@ -71,7 +64,6 @@ function CadastroPage() {
 
                     <Form onSubmit={handleSubmit}>
 
-                        {/* CAMPO LOGIN (E-mail) */}
                         <Form.Group className="mb-3" controlId="formCadastroLogin">
                             <Form.Label>Login (E-mail)</Form.Label>
                             <div className="input-group">
@@ -86,7 +78,6 @@ function CadastroPage() {
                             </div>
                         </Form.Group>
 
-                        {/* CAMPO SENHA */}
                         <Form.Group className="mb-3" controlId="formCadastroSenha">
                             <Form.Label>Senha</Form.Label>
                             <div className="input-group">
@@ -101,7 +92,6 @@ function CadastroPage() {
                             </div>
                         </Form.Group>
 
-                        {/* CAMPO CONFIRMAR SENHA */}
                         <Form.Group className="mb-4" controlId="formConfirmarSenha">
                             <Form.Label>Confirme a Senha</Form.Label>
                             <div className="input-group">
@@ -116,7 +106,6 @@ function CadastroPage() {
                             </div>
                         </Form.Group>
 
-                        {/* BOTÃO CADASTRAR */}
                         <Button
                             variant="primary"
                             type="submit"
@@ -128,7 +117,6 @@ function CadastroPage() {
                     </Form>
                 </Card.Body>
 
-                {/* RODAPÉ: Link para Login */}
                 <Card.Footer className="text-center border-0 bg-white">
                     Já tem conta? <Link to="/login">Faça login</Link>
                 </Card.Footer>

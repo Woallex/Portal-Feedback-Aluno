@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from 'react';
 import { Alert, Col, Container, Row, Spinner } from 'react-bootstrap';
-import { useLocation } from 'react-router-dom'; // ✅ já estava importado
+import { useLocation } from 'react-router-dom';
 import CardPublicacao from '../components/CardPublicacao';
 import MenuFlutuante from '../components/MenuFlutuante';
 import NavCategorias from '../components/NavCategorias';
@@ -8,15 +8,11 @@ import { useAuth } from '../contexts/AuthContext';
 import { apiFetch } from '../utils/api';
 
 function HomePage() {
-    // Requisito 3: Usando useState
     const [complaints, setComplaints] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [activeCategory, setActiveCategory] = useState(null);
-
-    // ✅ NOVO: estado para mensagem de sucesso
     const [successMessage, setSuccessMessage] = useState(null);
-
     const { user } = useAuth();
 
     if (!user) {
@@ -27,19 +23,16 @@ function HomePage() {
         );
     }
 
-    const location = useLocation(); // ✅ NOVO
+    const location = useLocation();
 
-    // ✅ NOVO: captura mensagem vinda do navigate
     useEffect(() => {
         if (location.state?.successMessage) {
             setSuccessMessage(location.state.successMessage);
 
-            // Limpa o state para não reaparecer ao dar refresh
             window.history.replaceState({}, document.title);
         }
     }, [location.state]);
 
-    // Função para carregar as reclamações
     const loadComplaints = useCallback(async () => {
         setLoading(true);
         setError(null);
@@ -94,7 +87,6 @@ function HomePage() {
                         : 'Todas as Publicações'}
                 </h4>
 
-                {/* ✅ NOVO: Alert de sucesso */}
                 {successMessage && (
                     <Alert
                         variant="success"

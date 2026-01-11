@@ -1,11 +1,5 @@
-const API_BASE_URL = "https://api-flask-1-meo8.onrender.com/";
-;
+const API_BASE_URL = "https://api-portal-feedback.onrender.com";
 
-/**
- * Função utilitária para fazer requisições à API.
- * Importante: 'credentials: "include"' é NECESSÁRIO para que os cookies de sessão 
- * (que o Flask usa para manter o login) sejam enviados e recebidos.
- */
 export async function apiFetch(endpoint, options = {}) {
     const url = `${API_BASE_URL}${endpoint}`;
 
