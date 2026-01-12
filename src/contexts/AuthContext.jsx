@@ -15,7 +15,7 @@ export const AuthProvider = ({ children }) => {
 
     const login = async (login, senha) => {
         setLoading(true);
-        const { ok, data, error } = await apiFetch('/login', {
+        const { ok, data, error } = await apiFetch('https://api-portal-feedback.onrender.com', {
             method: 'POST',
             body: JSON.stringify({ login, senha }),
         });
