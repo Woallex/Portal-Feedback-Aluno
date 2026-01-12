@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, useEffect } from 'react';
+import { createContext, useContext, useEffect, useState } from 'react';
 import { apiFetch } from '../utils/api';
 
 const AuthContext = createContext();
@@ -6,7 +6,7 @@ const AuthContext = createContext();
 export const useAuth = () => useContext(AuthContext);
 
 export const AuthProvider = ({ children }) => {
-    const [user, setUser] = useState(null); 
+    const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
@@ -15,24 +15,37 @@ export const AuthProvider = ({ children }) => {
 
     const login = async (login, senha) => {
         setLoading(true);
-        const { ok, data, error } = await apiFetch('https://api-portal-feedback.onrender.com', {
-            method: 'POST',
-            body: JSON.stringify({ login, senha }),
-        });
-        setLoading(false);
 
-        if (ok) {
-            setUser(data); 
-            return { ok: true };
-        } else {
+        try {
+            const response = await fetch('https://api-portal-feedback.onrender.com/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ login, senha }),
+                credentials: 'include',
+            });
+
+            if (response.ok) {
+                const data = await response.json();
+                setUser(data);
+                return { ok: true, data };
+            } else {
+                const errorText = await response.text();
+                setUser(null);
+                return { ok: false, error: errorText };
+            }
+        } catch (err) {
             setUser(null);
-            return { ok: false, error };
+            return { ok: false, error: err.message };
+        } finally {
+            setLoading(false);
         }
     };
 
     const logout = async () => {
         setLoading(true);
-        await apiFetch('/logout', { method: 'POST' }); 
+        await apiFetch('/logout', { method: 'POST' });
         setUser(null);
         setLoading(false);
         return { ok: true };
