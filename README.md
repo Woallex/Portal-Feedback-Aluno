@@ -25,25 +25,8 @@
 * **Flask-CORS**: Gerenciamento de permissões de acesso entre o React e a API.
 * **JSON**: Utilizado como "banco de dados" para usuários e reclamações.
 
-## 🔧 Como rodar o projeto
-
-### 1. Preparar o Backend (API)
-Navegue até a pasta `api` e execute o servidor Python:
-```bash
-cd api
-python app.py
-```
-
-### 2. Iniciar o Frontend
-```bash
-Na raiz do projeto, instale as dependências e rode o Vite:
-npm install
-npm run dev
-```
-
 ## ☁️ Deploy (Vercel)
 ```bash
-O projeto está otimizado para deploy na Vercel:
--   As rotas de /api são mapeadas automaticamente para o backend Python através do arquivo vercel.json.
--   O frontend React é compilado e servido de forma otimizada pelo Vite.
+https://portal-feedback-aluno.vercel.app/
+Obs: Em ajustes...
 ```
