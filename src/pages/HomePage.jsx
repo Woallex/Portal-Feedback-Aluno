@@ -55,7 +55,6 @@ function HomePage() {
 
     useEffect(() => {
         if (user) {
-            console.log('Usuário logado: ', user);
             loadComplaints();
         }
     }, [user, loadComplaints]);

@@ -28,7 +28,7 @@ export const AuthProvider = ({ children }) => {
 
             if (response.ok) {
                 const data = await response.json();
-                setUser(data);
+                setUser(data.data);
                 return { ok: true, data };
             } else {
                 const errorText = await response.text();
