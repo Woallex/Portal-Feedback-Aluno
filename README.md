@@ -3,7 +3,7 @@
 **Sistema de gestão de feedbacks** acadêmicas em desenvolvimento para o Instituto Federal do Ceará campo Crato. O projeto permite que alunos façam publicações categorizadase e gerenciem seus favoritos.
 
 <div align="center">
-<img width="1893" height="914" alt="Image" src="https://github.com/user-attachments/assets/de21ecd9-6abf-43fd-aeff-ba2132ebb303" />
+<img width="1893" height="914" alt="image" src="https://github.com/user-attachments/assets/18dc3b29-f015-48b9-bf2a-1c00d682af0d" />
 </div>
 
 ## 🚀 Características
