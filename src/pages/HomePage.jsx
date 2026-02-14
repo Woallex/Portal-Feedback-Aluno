@@ -37,7 +37,7 @@ function HomePage() {
         setLoading(true);
         setError(null);
 
-        let endpoint = `/reclamacoes2?userId=${user.id}`;
+        let endpoint = `/publications?userId=${user.id}`;
         if (activeCategory) {
             endpoint += `&categoria=${activeCategory}`;
         }

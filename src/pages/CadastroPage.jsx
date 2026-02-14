@@ -42,7 +42,7 @@ function CadastroPage() {
             setSuccess(true);
             setError(null);
             setTimeout(() => {
-                navigate('/login');
+                navigate('/auth/login');
             }, 2000);
 
         } else {
@@ -118,7 +118,7 @@ function CadastroPage() {
                 </Card.Body>
 
                 <Card.Footer className="text-center border-0 bg-white">
-                    Já tem conta? <Link to="/login">Faça login</Link>
+                    Já tem conta? <Link to="/auth/login">Faça login</Link>
                 </Card.Footer>
             </Card>
         </Container>

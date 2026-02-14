@@ -39,7 +39,7 @@ function CriarPublicacaoPage() {
         setLoading(true);
 
         try {
-            const publicacaoResponse = await apiFetch('/reclamacoes', {
+            const publicacaoResponse = await apiFetch('/publications', {
                 method: 'POST',
                 body: JSON.stringify({ titulo, corpo, categoria }),
             });

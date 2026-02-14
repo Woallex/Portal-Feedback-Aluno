@@ -10,7 +10,7 @@ function Header() {
     const handleLogout = async () => {
         const { ok } = await logout();
         if (ok) {
-            navigate('/login');
+            navigate('/auth/login');
         }
     };
 
