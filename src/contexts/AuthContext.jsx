@@ -17,13 +17,9 @@ export const AuthProvider = ({ children }) => {
         setLoading(true);
 
         try {
-            const response = await fetch('https://api-portal-feedback-aluno.onrender.com/login', {
+            const response = await apiFetch('/auth/login', {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
                 body: JSON.stringify({ login, senha }),
-                credentials: 'include',
             });
 
             if (response.ok) {

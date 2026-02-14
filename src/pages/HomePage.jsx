@@ -35,11 +35,10 @@ function HomePage() {
 
     const loadComplaints = useCallback(async () => {
         setLoading(true);
-        setError(null);
 
-        let endpoint = `/publications?userId=${user.id}`;
+        let endpoint = '/publications';
         if (activeCategory) {
-            endpoint += `&categoria=${activeCategory}`;
+            endpoint += `?category=${activeCategory}`;
         }
 
         const { ok, data, error: apiError } = await apiFetch(endpoint);
@@ -51,7 +50,7 @@ function HomePage() {
             setComplaints([]);
         }
         setLoading(false);
-    }, [user.id, activeCategory]);
+    }, [activeCategory]);
 
     useEffect(() => {
         if (user) {
