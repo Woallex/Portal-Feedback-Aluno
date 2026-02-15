@@ -18,9 +18,9 @@ export const AuthProvider = ({ children }) => {
 
         try {
             const response = await apiFetch('/auth/login', {
-                method: 'POST',
-                body: JSON.stringify({ login, senha }),
-            });
+            method: 'POST',
+            body: JSON.stringify({ login, senha })
+        });
 
             if (response.ok) {
                 const data = await response.json();
