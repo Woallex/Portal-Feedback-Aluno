@@ -13,31 +13,28 @@ export const AuthProvider = ({ children }) => {
         setLoading(false);
     }, []);
 
-    const login = async (login, senha) => {
-        setLoading(true);
-
-        try {
-            const response = await apiFetch('/auth/login', {
+   const login = async (login, senha) => {
+    setLoading(true);
+    try {
+        const response = await apiFetch('/auth/login', {
             method: 'POST',
-            body: JSON.stringify({ login, senha })
+            body: JSON.stringify({ login, senha }),
         });
 
-            if (response.ok) {
-                const data = await response.json();
-                setUser(data.data);
-                return { ok: true, data };
-            } else {
-                const errorText = await response.text();
-                setUser(null);
-                return { ok: false, error: errorText };
-            }
-        } catch (err) {
+        if (response.ok) {
+            setUser(response.data); 
+            return { ok: true };
+        } else {
             setUser(null);
-            return { ok: false, error: err.message };
-        } finally {
-            setLoading(false);
+            return { ok: false, error: response.error }; 
         }
-    };
+    } catch (err) {
+        setUser(null);
+        return { ok: false, error: "Erro de conexão com o servidor." };
+    } finally {
+        setLoading(false);
+    }
+};
 
     const logout = async () => {
         setLoading(true);
