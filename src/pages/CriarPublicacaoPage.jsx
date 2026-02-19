@@ -14,7 +14,7 @@ function CriarPublicacaoPage() {
 
     const [titulo, setTitulo] = useState('');
     const [corpo, setCorpo] = useState('');
-    const [categoria, setCategoria] = useState('');
+    const [category, setCategory] = useState('');
     const [isFavorite, setIsFavorite] = useState(false);
 
     const [loading, setLoading] = useState(false);
@@ -31,7 +31,7 @@ function CriarPublicacaoPage() {
         e.preventDefault();
         setError(null);
 
-        if (!titulo || corpo.length < 10 || !categoria) {
+        if (!titulo || corpo.length < 10 || !category) {
             setError("Preencha todos os campos corretamente (descrição mínima de 10 caracteres).");
             return;
         }
@@ -41,7 +41,7 @@ function CriarPublicacaoPage() {
         try {
             const publicacaoResponse = await apiFetch('/publications', {
                 method: 'POST',
-                body: JSON.stringify({ titulo, corpo, categoria }),
+                body: JSON.stringify({ titulo, corpo, category }),
             });
 
             if (!publicacaoResponse.ok) {
@@ -128,8 +128,8 @@ function CriarPublicacaoPage() {
                         <Form.Group className="mb-3" controlId="formCategoria">
                             <Form.Label>Categoria</Form.Label>
                             <Form.Select
-                                value={categoria}
-                                onChange={(e) => setCategoria(e.target.value)}
+                                value={category}
+                                onChange={(e) => setCategory(e.target.value)}
                                 required
                                 disabled={loading || success}
                             >
