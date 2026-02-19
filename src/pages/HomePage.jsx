@@ -35,10 +35,11 @@ function HomePage() {
 
     const loadComplaints = useCallback(async () => {
         setLoading(true);
+        setError(null);
 
         let endpoint = '/publications';
         if (activeCategory) {
-            endpoint += `?category=${activeCategory}`;
+            endpoint += `?category=${encodeURIComponent(activeCategory)}`;
         }
 
         const { ok, data, error: apiError } = await apiFetch(endpoint);
