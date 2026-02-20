@@ -4,8 +4,8 @@ import { FaCalendarAlt, FaRegStar, FaStar, FaTag, FaUser } from 'react-icons/fa'
 import { useAuth } from '../contexts/AuthContext';
 import { apiFetch } from '../utils/api';
 
-const getCategoryVariant = (categoria) => {
-    switch (categoria) {
+const getCategoryVariant = (category) => {
+    switch (category) {
         case 'Infraestrutura': return 'danger';
         case 'Alimentação': return 'warning';
         case 'TI/Portais': return 'info';
@@ -77,8 +77,8 @@ function CardPublicacao({ publicacao, onToggleFavorite }) {
                     {publicacao.corpo}
                 </Card.Text>
 
-                <Badge pill bg={getCategoryVariant(publicacao.categoria)} className="mb-2">
-                    <FaTag className="me-1" /> {publicacao.categoria}
+                <Badge pill bg={getCategoryVariant(publicacao.category)} className="mb-2">
+                    <FaTag className="me-1" /> {publicacao.category}
                 </Badge>
 
                 <div className="d-flex flex-column text-sm">
