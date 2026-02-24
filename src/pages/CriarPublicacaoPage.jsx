@@ -116,8 +116,8 @@ function CriarPublicacaoPage() {
                             <Form.Control
                                 as="textarea"
                                 rows={3}
-                                value={corpo}
-                                onChange={(e) => setCorpo(e.target.value)}
+                                value={description}
+                                onChange={(e) => setDescription(e.target.value)}
                                 minLength={10}
                                 maxLength={250}
                                 required

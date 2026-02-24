@@ -53,7 +53,7 @@ function CardPublicacao({ publicacao, onToggleFavorite }) {
             <Card.Body>
                 <div className="d-flex align-items-center justify-content-between mb-3">
                     <Card.Title className="mb-0">
-                        {publicacao.titulo}
+                        {publicacao.title}
                     </Card.Title>
 
                     <Button
@@ -74,7 +74,7 @@ function CardPublicacao({ publicacao, onToggleFavorite }) {
                 </div>
 
                 <Card.Text className="text-muted mb-3">
-                    {publicacao.corpo}
+                    {publicacao.description}
                 </Card.Text>
 
                 <Badge pill bg={getCategoryVariant(publicacao.category)} className="mb-2">
