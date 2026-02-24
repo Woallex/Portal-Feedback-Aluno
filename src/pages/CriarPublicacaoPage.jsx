@@ -12,8 +12,8 @@ const CATEGORIAS = [
 function CriarPublicacaoPage() {
     const navigate = useNavigate();
 
-    const [titulo, setTitulo] = useState('');
-    const [corpo, setCorpo] = useState('');
+    const [title, setTitle] = useState('');
+    const [description, setDescription] = useState('');
     const [category, setCategory] = useState('');
     const [isFavorite, setIsFavorite] = useState(false);
 
@@ -31,7 +31,7 @@ function CriarPublicacaoPage() {
         e.preventDefault();
         setError(null);
 
-        if (!titulo || corpo.length < 10 || !category) {
+        if (!title || description.length < 10 || !category) {
             setError("Preencha todos os campos corretamente (descrição mínima de 10 caracteres).");
             return;
         }
@@ -41,7 +41,7 @@ function CriarPublicacaoPage() {
         try {
             const publicacaoResponse = await apiFetch('/publications', {
                 method: 'POST',
-                body: JSON.stringify({ titulo, corpo, category }),
+                body: JSON.stringify({ title, description, category }),
             });
 
             if (!publicacaoResponse.ok) {
@@ -103,8 +103,8 @@ function CriarPublicacaoPage() {
                             <Form.Label>Título (máx. 20 caracteres)</Form.Label>
                             <Form.Control
                                 type="text"
-                                value={titulo}
-                                onChange={(e) => setTitulo(e.target.value)}
+                                value={title}
+                                onChange={(e) => setTitle(e.target.value)}
                                 maxLength={20}
                                 required
                                 disabled={loading || success}
