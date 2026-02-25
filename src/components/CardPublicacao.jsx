@@ -28,8 +28,8 @@ function CardPublicacao({ publicacao, onToggleFavorite }) {
 
         setLoading(true);
         const endpoint = isFavorite
-            ? `/favoritos/${publicacao.id}`
-            : `/favoritos/${publicacao.id}`;
+            ? `/favorites/${publicacao.id}`
+            : `/favorites/${publicacao.id}`;
 
         const method = isFavorite ? 'DELETE' : 'POST';
 

@@ -28,7 +28,7 @@ function MenuFlutuante() {
                     </Button>
                     <Button
                         variant="success"
-                        onClick={() => navigate('/favoritos')}
+                        onClick={() => navigate('/favorites')}
                     >
                         <FaStar className="me-2" /> Ver Favoritos
                     </Button>

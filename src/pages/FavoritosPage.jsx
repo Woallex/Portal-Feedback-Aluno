@@ -5,53 +5,53 @@ import NavCategorias from '../components/NavCategorias';
 import { useAuth } from '../contexts/AuthContext';
 import { apiFetch } from '../utils/api';
 
-function FavoritosPage() {
-    const [favoritos, setFavoritos] = useState([]);
+function FavoritesPage() {
+    const [favorites, setFavorites] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [activeCategory, setActiveCategory] = useState(null);
 
     const { user } = useAuth();
 
-    const loadFavoritos = useCallback(async () => {
+    const loadFavorites = useCallback(async () => {
         setLoading(true);
         setError(null);
 
-        let endpoint = '/favoritos';
+        let endpoint = '/favorites';
 
         const { ok, data, error: apiError } = await apiFetch(endpoint);
 
         if (ok) {
-            const favoritosComFlag = data.map(pub => ({
+            const favoritesWithFlag = data.map(pub => ({
                 ...pub,
                 favorito: true
             }));
-            setFavoritos(favoritosComFlag);
+            setFavorites(favoritesWithFlag);
         } else {
             setError(apiError || "Erro ao carregar favoritos.");
-            setFavoritos([]);
+            setFavorites([]);
         }
         setLoading(false);
     }, []);
 
     useEffect(() => {
         if (user) {
-            loadFavoritos();
+            loadFavorites();
         }
-    }, [user, loadFavoritos]);
+    }, [user, loadFavorites]);
 
 
     const handleToggleFavorite = (complaintId, isNowFavorite) => {
         if (!isNowFavorite) {
-            setFavoritos(prevFavoritos =>
-                prevFavoritos.filter(fav => fav.id !== complaintId)
+            setFavorites(prevFavorites =>
+                prevFavorites.filter(fav => fav.id !== complaintId)
             );
         }
     };
 
-    const filteredFavoritos = activeCategory
-        ? favoritos.filter(fav => fav.categoria === activeCategory)
-        : favoritos;
+    const filteredFavorites = activeCategory
+        ? favorites.filter(fav => fav.categoria === activeCategory)
+        : favorites;
 
 
     return (
@@ -63,7 +63,6 @@ function FavoritosPage() {
 
             <Container className="mt-4">
                 <h4 className="mb-3">
-                    Minhas Publicações Favoritadas
                     {activeCategory && ` em ${activeCategory}`}
                 </h4>
 
@@ -75,14 +74,14 @@ function FavoritosPage() {
 
                 {error && <Alert variant="danger">{error}</Alert>}
 
-                {!loading && filteredFavoritos.length === 0 && !error && (
+                {!loading && filteredFavorites.length === 0 && !error && (
                     <Alert variant="info" className="text-center">
                         Nenhuma publicação favoritada{activeCategory && ` para a categoria ${activeCategory}`}.
                     </Alert>
                 )}
 
                 <Row>
-                    {filteredFavoritos.map(fav => (
+                    {filteredFavorites.map(fav => (
                         <Col md={6} lg={4} key={fav.id}>
                             <CardPublicacao
                                 publicacao={fav}
@@ -96,4 +95,4 @@ function FavoritosPage() {
     );
 }
 
-export default FavoritosPage;
+export default FavoritesPage;

@@ -3,7 +3,7 @@ import Header from './components/Header';
 import { useAuth } from './contexts/AuthContext';
 import CadastroPage from './pages/CadastroPage';
 import CriarPublicacaoPage from './pages/CriarPublicacaoPage';
-import FavoritosPage from './pages/FavoritosPage';
+import FavoritesPage from './pages/FavoritosPage';
 import HomePage from './pages/HomePage';
 import LoginPage from './pages/LoginPage';
 
@@ -31,7 +31,7 @@ function App() {
                 <Route path="/cadastro" element={<CadastroPage />} />
                 <Route path="/" element={<ProtectedLayout element={<HomePage />} />} />
                 <Route path="/publicar" element={<CriarPublicacaoPage />} />
-                <Route path="/favoritos" element={<ProtectedLayout element={<FavoritosPage />} />} />
+                <Route path="/favorites" element={<ProtectedLayout element={<FavoritesPage />} />} />
                 <Route path="*" element={<h1 className="text-center mt-5">404: Página não encontrada</h1>} />
             </Routes>
         </Router>

@@ -51,7 +51,7 @@ function CriarPublicacaoPage() {
             const novaPublicacao = publicacaoResponse.data;
 
             if (isFavorite) {
-                await apiFetch(`/favoritos/${novaPublicacao.id}`, {
+                await apiFetch(`/favorites/${novaPublicacao.id}`, {
                     method: 'POST',
                 });
             }
