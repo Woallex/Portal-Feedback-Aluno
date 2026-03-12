@@ -13,12 +13,12 @@ export const AuthProvider = ({ children }) => {
         setLoading(false);
     }, []);
 
-   const login = async (login, senha) => {
+   const login = async (login, password) => {
     setLoading(true);
     try {
         const response = await apiFetch('/auth/login', {
             method: 'POST',
-            body: JSON.stringify({ login, senha }),
+            body: JSON.stringify({ login, password }),
         });
 
         if (response.ok) {
