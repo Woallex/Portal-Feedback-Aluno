@@ -42,12 +42,12 @@ function HomePage() {
             endpoint += `?category=${encodeURIComponent(activeCategory)}`;
         }
 
-        const { ok, data, error: apiError } = await apiFetch(endpoint);
+        const response = await apiFetch(endpoint);
 
-        if (ok) {
-            setComplaints(data);
+        if (!response.error) {
+            setComplaints(response.data);
         } else {
-            setError(apiError || "Erro ao carregar publicações.");
+            setError(response.error || "Erro ao carregar publicações.");
             setComplaints([]);
         }
         setLoading(false);

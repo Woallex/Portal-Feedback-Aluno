@@ -10,6 +10,10 @@ export const AuthProvider = ({ children }) => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
+        const savedUser = localStorage.getItem('user');
+        if (savedUser) {
+            setUser(JSON.parse(savedUser));
+        }
         setLoading(false);
     }, []);
 
@@ -21,27 +25,32 @@ export const AuthProvider = ({ children }) => {
             body: JSON.stringify({ login, password }),
         });
 
-        if (response.ok) {
-            setUser(response.data); 
-            return { ok: true };
+        if (!response.error) {
+            const userData = response.data;
+
+            setUser(userData);
+            localStorage.setItem('user', JSON.stringify(userData))
+
+            return { success: true };
         } else {
             setUser(null);
-            return { ok: false, error: response.error }; 
+            return { success: false, error: response.error }; 
         }
     } catch (err) {
         setUser(null);
-        return { ok: false, error: "Erro de conexão com o servidor." };
+        return { success: false, error: "Erro de conexão com o servidor." };
     } finally {
         setLoading(false);
     }
 };
 
     const logout = async () => {
-        setLoading(true);
-        await apiFetch('/logout', { method: 'POST' });
-        setUser(null);
-        setLoading(false);
-        return { ok: true };
+       setLoading(true);
+       localStorage.removeItem('token');
+       localStorage.removeItem('user');
+       setUser(null);
+       setLoading(false);
+       return { success: true };
     };
 
     const value = {

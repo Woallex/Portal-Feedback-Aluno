@@ -39,16 +39,16 @@ function CriarPublicacaoPage() {
         setLoading(true);
 
         try {
-            const publicacaoResponse = await apiFetch('/publications', {
+            const response = await apiFetch('/publications', {
                 method: 'POST',
                 body: JSON.stringify({ title, description, category }),
             });
 
-            if (!publicacaoResponse.ok) {
-                throw new Error(publicacaoResponse.error || "Erro ao criar publicação.");
+            if (response.error) {
+                throw new Error(response.error || "Erro ao criar publicação.");
             }
 
-            const novaPublicacao = publicacaoResponse.data;
+            const novaPublicacao = response.data;
 
             if (isFavorite) {
                 await apiFetch(`/favorites/${novaPublicacao.id}`, {
@@ -58,13 +58,9 @@ function CriarPublicacaoPage() {
 
             navigate('/', {
                 replace: true,
-                state: {
-                    successMessage: 'Publicação criada com sucesso!'
-                }
+                state: { successMessage: 'Publicação criada com sucesso!' }
             });
-
         } catch (err) {
-            console.error(err);
             setError(err.message || "Não foi possível publicar.");
             setLoading(false);
         }

@@ -27,22 +27,18 @@ function CardPublicacao({ publicacao, onToggleFavorite }) {
         }
 
         setLoading(true);
-        const endpoint = isFavorite
-            ? `/favorites/${publicacao.id}`
-            : `/favorites/${publicacao.id}`;
+        const endpoint = `/favorites/${publicacao.id}`;
+        
+        const response = await apiFetch(endpoint, { method: 'POST' });
 
-        const method = isFavorite ? 'DELETE' : 'POST';
-
-        const { ok } = await apiFetch(endpoint, { method });
-
-        if (ok) {
+        if (!response.console.error){
             const newState = !isFavorite;
             setIsFavorite(newState);
             if (onToggleFavorite) {
                 onToggleFavorite(publicacao.id, newState);
             }
         } else {
-            alert(`Erro ao ${isFavorite ? 'desfavoritar' : 'favoritar'} a publicação.`);
+            alert(response.error || `Erro ao ${isFavorite ? 'desfavoritar' : 'favoritar'} a publicação.`);
         }
 
         setLoading(false);

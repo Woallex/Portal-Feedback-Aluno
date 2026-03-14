@@ -17,18 +17,16 @@ function FavoritesPage() {
         setLoading(true);
         setError(null);
 
-        let endpoint = '/favorites';
+        const response = await apiFetch('/favorites');
 
-        const { ok, data, error: apiError } = await apiFetch(endpoint);
-
-        if (ok) {
-            const favoritesWithFlag = data.map(pub => ({
+        if (!response.error) {
+            const favoritesWithFlag = response.data.map(pub => ({
                 ...pub,
                 favorito: true
             }));
             setFavorites(favoritesWithFlag);
         } else {
-            setError(apiError || "Erro ao carregar favoritos.");
+            setError(response.error || "Erro ao carregar favoritos.");
             setFavorites([]);
         }
         setLoading(false);

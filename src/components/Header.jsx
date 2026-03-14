@@ -9,9 +9,11 @@ function Header() {
     const navigate = useNavigate();
 
     const handleLogout = async () => {
-        const { ok } = await logout();
-        if (ok) {
+        const response = await logout();
+        if (!response.success) {
             navigate('/login');
+        } else {
+            alert("Erro ao sair da conta.");
         }
     };
 
