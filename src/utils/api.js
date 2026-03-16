@@ -20,10 +20,13 @@ export async function apiFetch(endpoint, options = {}) {
 
         if (response.status === 204) { return { status: 204 }}
 
-        const data = await response.json();
+        const data = await response.json().catch(() => ({}));
 
         if (!response.ok) {
-            return { error: data.error || "Erro na requisição.", status: response.status };
+            return { 
+                error: data.message || data.error || "Erro na requisição.", 
+                status: response.status 
+            };
         }
 
        if (endpoint === '/auth/login' &&  data.data.token) {
