@@ -29,19 +29,23 @@ function CardPublicacao({ publicacao, onToggleFavorite }) {
         setLoading(true);
         const endpoint = `/favorites/${publicacao.id}`;
         
-        const response = await apiFetch(endpoint, { method: 'POST' });
+        try {
+            const response = await apiFetch(endpoint, { method: 'POST' });
 
-        if (!response.console.error){
+            if (!response.error){
             const newState = !isFavorite;
             setIsFavorite(newState);
             if (onToggleFavorite) {
                 onToggleFavorite(publicacao.id, newState);
             }
         } else {
-            alert(response.error || `Erro ao ${isFavorite ? 'desfavoritar' : 'favoritar'} a publicação.`);
+            alert(response.error || "Erro ao atualizar favorito.");
         }
-
-        setLoading(false);
+        } catch (error) {
+            console.error(error);
+        } finally {
+            setLoading(false);
+        }
     };
 
     return (
