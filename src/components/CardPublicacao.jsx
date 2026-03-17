@@ -83,10 +83,10 @@ function CardPublicacao({ publicacao, onToggleFavorite }) {
 
                 <div className="d-flex flex-column text-sm">
                     <small className="mb-1">
-                        <FaUser className="me-1" /> {publicacao.autor}
+                        <FaUser className="me-1" /> {publicacao.author}
                     </small>
                     <small className="text-muted">
-                        <FaCalendarAlt className="me-1" /> Publicado em {publicacao.data}
+                        <FaCalendarAlt className="me-1" /> Publicado em {publicacao.date}
                     </small>
                 </div>
             </Card.Body>
