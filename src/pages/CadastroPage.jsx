@@ -33,12 +33,12 @@ function CadastroPage() {
 
         setIsSubmitting(true);
 
-        const { ok, error: apiError } = await apiFetch('/usuarios', {
+        const response = await apiFetch('/auth/register', {
             method: 'POST',
-            body: JSON.stringify({ login: loginInput, senha: senhaInput }),
+            body: JSON.stringify({ login: loginInput, password: senhaInput }),
         });
 
-        if (ok) {
+        if (!response.error) {
             setSuccess(true);
             setError(null);
             setTimeout(() => {
@@ -46,7 +46,7 @@ function CadastroPage() {
             }, 2000);
 
         } else {
-            setError(apiError || "Erro ao realizar o cadastro.");
+            setError(response.error || "Erro ao realizar o cadastro.");
         }
         setIsSubmitting(false);
     };
