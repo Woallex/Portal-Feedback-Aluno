@@ -26,11 +26,14 @@ export const AuthProvider = ({ children }) => {
         });
 
         if (!response.error) {
+            localStorage.clear();
+
             const userData = response.data;
 
-            setUser(userData);
+            localStorage.setItem('toeken', userData.token);
             localStorage.setItem('user', JSON.stringify(userData))
 
+            setUser(userData);
             return { success: true };
         } else {
             setUser(null);
@@ -46,8 +49,7 @@ export const AuthProvider = ({ children }) => {
 
     const logout = async () => {
        setLoading(true);
-       localStorage.removeItem('token');
-       localStorage.removeItem('user');
+        localStorage.clear();
        setUser(null);
        setLoading(false);
        return { success: true };
