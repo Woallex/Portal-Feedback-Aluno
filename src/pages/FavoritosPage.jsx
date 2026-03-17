@@ -72,9 +72,12 @@ function FavoritesPage() {
 
                 {error && <Alert variant="danger">{error}</Alert>}
 
-                {!loading && filteredFavorites.length === 0 && !error && (
+                {!loading && !error && filteredFavorites.length === 0 && (
                     <Alert variant="info" className="text-center">
-                        Nenhuma publicação favoritada{activeCategory && ` para a categoria ${activeCategory}`}.
+                        { activeCategory
+                            ? `Você ainda não favoritou nenhuma publicação em ${activeCategory}.`
+                            : `Você ainda não favoritou nenhuma publicação.`
+                        }
                     </Alert>
                 )}
 
