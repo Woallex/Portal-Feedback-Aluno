@@ -47,12 +47,12 @@ export const AuthProvider = ({ children }) => {
     }
 };
 
-    const logout = async () => {
+    const logout = () => {
        setLoading(true);
         localStorage.clear();
        setUser(null);
        setLoading(false);
-       return { success: true };
+       return { ok: true };
     };
 
     const value = {
