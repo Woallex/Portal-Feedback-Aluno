@@ -48,7 +48,7 @@ function FavoritesPage() {
     };
 
     const filteredFavorites = activeCategory
-        ? favorites.filter(fav => fav.categoria === activeCategory)
+        ? favorites.filter(fav => fav.category === activeCategory)
         : favorites;
 
 
