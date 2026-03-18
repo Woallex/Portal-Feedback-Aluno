@@ -8,14 +8,14 @@ function Header() {
     const { logout } = useAuth();
     const navigate = useNavigate();
 
-    const handleLogout = async () => {
-        const response = await logout();
-        if (!response.success) {
-            navigate('/login');
-        } else {
-            alert("Erro ao sair da conta.");
-        }
-    };
+const handleLogout = () => { 
+    const response = logout();
+    if (response.ok) {
+        navigate('/auth/login');
+    } else {
+        alert("Erro ao sair da conta.");
+    }
+};
 
     return (
         <Navbar bg="light" expand="lg" className="shadow-sm">
