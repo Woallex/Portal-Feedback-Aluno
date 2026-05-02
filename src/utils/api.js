@@ -27,20 +27,19 @@ export async function apiFetch(endpoint, options = {}) {
         const data = await response.json().catch(() => ({}));
 
         if (!response.ok) {
-            if (response.status === 401) {
-                console.warn(" Erro 401 na API. Token enviado:", token ? "Sim" : "Não");
-            }
             return { 
-                error: data.message || data.error || "Erro na requisição.", 
+                error: data.message || "Erro na requisição.", 
                 status: response.status 
             };
         }
 
-        if (endpoint === '/auth/login' && data.data?.token) {
-            localStorage.setItem('token', data.data.token);
+        const receivedToken = data.token || data.data?.token;
+
+        if (endpoint === '/auth/login' && receivedToken) {
+            localStorage.setItem('token', receivedToken);
         }
 
-        return data;
+        return { ...data, status: response.status };
 
     } catch (error) {
         console.error("Erro no apiFetch:", error);
