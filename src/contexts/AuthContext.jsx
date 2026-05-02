@@ -17,28 +17,34 @@ export const AuthProvider = ({ children }) => {
         setLoading(false);
     }, []);
 
-   const login = async (login, password) => {
+   const login = async (email, password) => {
     setLoading(true);
     try {
         const response = await apiFetch('/auth/login', {
             method: 'POST',
-            body: JSON.stringify({ login, password }),
+            body: JSON.stringify({ login: email, password }),
         });
 
-        if (!response.error) {
-            localStorage.clear();
+        if (!response.error && response.status === 200) {
+            localStorage.removeItem('token');
+            localStorage.removeItem('user');
 
-            const userData = response.data;
+            const token = response.token || response.data?.token;
+            const userData = response.data || response.data?.user || { login: email };
 
-            localStorage.setItem('token', userData.token);
+            localStorage.setItem('token', token);
             localStorage.setItem('user', JSON.stringify(userData))
 
             setUser(userData);
             return { success: true };
-        } else {
-            setUser(null);
-            return { success: false, error: response.error }; 
+        } 
+
+        if (response.status === 202) {
+            return { success: true, requires2FA: true, message: response.message }
         }
+
+        setUser(null);
+        return { success: false, error: response.error || "Erro ao realizar login." }
     } catch (err) {
         setUser(null);
         return { success: false, error: "Erro de conexão com o servidor." };

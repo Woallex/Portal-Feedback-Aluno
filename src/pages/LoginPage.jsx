@@ -12,6 +12,7 @@ function LoginPage() {
     const [isSubmitting, setIsSubmitting] = useState(false);
     const { login, isLoggedIn } = useAuth();
     const navigate = useNavigate();
+    const [sendCodig, setSendCodig] = useState(false)
 
     useEffect(() => {
         if (isLoggedIn) {
@@ -20,17 +21,17 @@ function LoginPage() {
     }, [isLoggedIn, navigate]);
 
     const handleSubmit = async (e) => {
-        e.preventDefault();
-        setError(null);
-        setIsSubmitting(true);
+        const result = await login(loginInput, senhaInput)
 
-        const response = await login(loginInput, senhaInput);
-        if (response.ok) {
-            navigate('/');
-        } else {
-            setError(response.error || "Erro ao realizar login.");
+        if (result.success && requires2FA) {
+            setSendCodig(true)
+            alert("Verifique seu email.")
+        } else if (result.success) {
+            navigate('/home')
         }
-        setIsSubmitting(false);
+            else {
+            setError(result.error)
+        }
     };
 
     return (
