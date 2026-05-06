@@ -11,11 +11,9 @@ function LoginPage() {
     const [code2FA, setcode2FA] = useState('');
     const [error, setError] = useState(null);
     const [isSubmitting, setIsSubmitting] = useState(false);
-    const { login, isLoggedIn } = useAuth();
-    const navigate = useNavigate();
     const [sendCode, setSendCode] = useState(false);
 
-    const { login, isLoggedIn, Verify2FA } = useState();
+    const { login, isLoggedIn, verify2FA } = useAuth(); 
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -31,30 +29,29 @@ function LoginPage() {
 
         const result = await login(loginInput, senhaInput);
 
-        if (result.success && requires2FA) {
-            setSendCode(true)
-            alert("Verifique seu email.")
+        if (result.success && result.requires2FA) {
+            setSendCode(true);
+            alert("Verifique seu email.");
         } else if (result.success) {
-            navigate('/')
-        }
-            else {
-            setError(result.error || "Erro ao realizar login.")
+            navigate('/');
+        } else {
+            setError(result.error || "Erro ao realizar login.");
         }
         setIsSubmitting(false);
     };
 
     const handleVerify2FA = async (e) => {
-            e.preventDefault();
-            setError(null);
+        e.preventDefault();
+        setError(null);
 
-            const result = await Verify2FA(loginInput, senhaInput);
+        const result = await verify2FA(loginInput, code2FA);
 
-            if (result.success) {
-                navigate('/home');
-            } else {
-                setError(result.error || "Código inválido.")
-            }
+        if (result.success) {
+            navigate('/');
+        } else {
+            setError(result.error || "Código inválido.");
         }
+    };
 
     return (
         <Container className="d-flex justify-content-center align-items-center vh-100">
