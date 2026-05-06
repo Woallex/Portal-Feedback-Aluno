@@ -17,48 +17,72 @@ export const AuthProvider = ({ children }) => {
         setLoading(false);
     }, []);
 
-   const login = async (email, password) => {
-    setLoading(true);
-    try {
-        const response = await apiFetch('/auth/login', {
-            method: 'POST',
-            body: JSON.stringify({ login: email, password }),
-        });
+    const login = async (email, password) => {
+        setLoading(true);
+        try {
+            const response = await apiFetch('/auth/login', {
+                method: 'POST',
+                body: JSON.stringify({ login: email, password }),
+            });
 
-        if (!response.error && response.status === 200) {
-            localStorage.removeItem('token');
-            localStorage.removeItem('user');
+            if (!response.error && response.status === 200) {
+                const token = response.token || response.data?.token;
+                const userData = response.data || response.data?.user || { login: email };
 
-            const token = response.token || response.data?.token;
-            const userData = response.data || response.data?.user || { login: email };
+                localStorage.setItem('token', token);
+                localStorage.setItem('user', JSON.stringify(userData));
 
-            localStorage.setItem('token', token);
-            localStorage.setItem('user', JSON.stringify(userData))
+                setUser(userData);
+                return { success: true };
+            } 
 
-            setUser(userData);
-            return { success: true };
-        } 
+            if (response.status === 202) {
+                return { success: true, requires2FA: true, message: response.message };
+            }
 
-        if (response.status === 202) {
-            return { success: true, requires2FA: true, message: response.message }
+            setUser(null);
+            return { success: false, error: response.error || "Erro ao realizar login." };
+        } catch (err) {
+            setUser(null);
+            return { success: false, error: "Erro de conexão com o servidor." };
+        } finally {
+            setLoading(false);
         }
+    };
 
-        setUser(null);
-        return { success: false, error: response.error || "Erro ao realizar login." }
-    } catch (err) {
-        setUser(null);
-        return { success: false, error: "Erro de conexão com o servidor." };
-    } finally {
-        setLoading(false);
-    }
-};
+    const verify2FA = async (email, code) => {
+        setLoading(true);
+        try {
+            const response = await apiFetch('/auth/verify-2fa', {
+                method: 'POST',
+                body: JSON.stringify({ login: email, code: code }),
+            });
+
+            if (!response.error && response.status === 200) {
+                const token = response.token || response.data?.token;
+                const userData = response.data || response.data?.user || { login: email };
+
+                localStorage.setItem('token', token);
+                localStorage.setItem('user', JSON.stringify(userData));
+
+                setUser(userData);
+                return { success: true };
+            }
+
+            return { success: false, error: response.error || "Código inválido." };
+        } catch (err) {
+            return { success: false, error: "Erro ao validar código." };
+        } finally {
+            setLoading(false);
+        }
+    };
 
     const logout = () => {
-       setLoading(true);
+        setLoading(true);
         localStorage.clear();
-       setUser(null);
-       setLoading(false);
-       return { ok: true };
+        setUser(null);
+        setLoading(false);
+        return { ok: true };
     };
 
     const value = {
@@ -67,6 +91,7 @@ export const AuthProvider = ({ children }) => {
         loading,
         login,
         logout,
+        verify2FA,
     };
 
     return (
