@@ -53,7 +53,7 @@ export const AuthProvider = ({ children }) => {
     const verify2FA = async (email, code) => {
         setLoading(true);
         try {
-            const response = await apiFetch('/auth/verify-2fa', {
+            const response = await apiFetch('/auth/verify2fa', {
                 method: 'POST',
                 body: JSON.stringify({ login: email, code: code }),
             });
