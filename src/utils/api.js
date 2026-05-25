@@ -35,7 +35,7 @@ export async function apiFetch(endpoint, options = {}) {
 
         const receivedToken = data.token || data.data?.token;
 
-        const authEndpoints = [ '/auth/login', '/auth/verify2fa' ]
+        const authEndpoints = [ '/auth/login', '/auth/verify2FA' ]
 
         if (authEndpoints.includes(endpoint) && receivedToken) {
             localStorage.setItem('token', receivedToken);
