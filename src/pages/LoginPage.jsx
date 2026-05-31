@@ -20,6 +20,11 @@ function LoginPage() {
         if (isLoggedIn) {
             navigate('/');
         }
+
+        const userType = localStorage.getItem('userType');
+        if (!userType) {
+            navigate('/iniciopage');
+        }
     }, [isLoggedIn, navigate]);
 
     const handleSubmit = async (e) => {
@@ -33,7 +38,8 @@ function LoginPage() {
             setSendCode(true);
             alert("Verifique seu email.");
         } else if (result.success) {
-            navigate('/');
+            const userType = localStorage.getItem('userType');
+            navigate(userType === 'admin' ? '/admin' : '/');
         } else {
             setError(result.error || "Erro ao realizar login.");
         }
@@ -47,7 +53,8 @@ function LoginPage() {
         const result = await verify2FA(loginInput, code2FA);
 
         if (result.success) {
-            navigate('/');
+            const userType = localStorage.getItem('userType');
+            navigate(userType === 'admin' ? '/admin' : '/');
         } else {
             setError(result.error || "Código inválido.");
         }
