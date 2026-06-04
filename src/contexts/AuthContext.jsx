@@ -3,6 +3,40 @@ import { apiFetch } from '../utils/api';
 
 const AuthContext = createContext();
 
+const parseJwt = (token) => {
+    if (!token) return null;
+    try {
+        const payload = token.split('.')[1];
+        const decoded = JSON.parse(atob(payload.replace(/-/g, '+').replace(/_/g, '/')));
+        return decoded;
+    } catch {
+        return null;
+    }
+};
+
+const extractUserData = (response, email) => {
+    const token = response.token || response.data?.token || response.data?.data?.token;
+    let userData = response.user || response.data?.user || response.data?.data?.user;
+
+    if (!userData && response.data && typeof response.data === 'object') {
+        const candidate = response.data;
+        if ('role' in candidate || 'login' in candidate || 'id' in candidate) {
+            userData = candidate;
+        }
+    }
+
+    if (!userData) {
+        userData = { login: email };
+    }
+
+    const decoded = parseJwt(token);
+    if (decoded) {
+        userData = { ...decoded, ...userData };
+    }
+
+    return { token, userData };
+};
+
 export const useAuth = () => useContext(AuthContext);
 
 export const AuthProvider = ({ children }) => {
@@ -11,9 +45,22 @@ export const AuthProvider = ({ children }) => {
 
     useEffect(() => {
         const savedUser = localStorage.getItem('user');
+        const savedToken = localStorage.getItem('token');
+
         if (savedUser) {
-            setUser(JSON.parse(savedUser));
+            const parsedUser = JSON.parse(savedUser);
+            const decoded = parseJwt(savedToken);
+            if (decoded) {
+                const merged = { ...parsedUser, ...decoded };
+                setUser(merged);
+                if (merged.role && merged.id && (!parsedUser.role || !parsedUser.id)) {
+                    localStorage.setItem('user', JSON.stringify(merged));
+                }
+            } else {
+                setUser(parsedUser);
+            }
         }
+
         setLoading(false);
     }, []);
 
@@ -26,15 +73,15 @@ export const AuthProvider = ({ children }) => {
             });
 
             if (!response.error && response.status === 200) {
-                const token = response.token || response.data?.token;
-                const userData = response.data || response.data?.user || { login: email };
+                const { token, userData } = extractUserData(response, email);
 
                 localStorage.setItem('token', token);
                 localStorage.setItem('user', JSON.stringify(userData));
 
                 setUser(userData);
-                return { success: true };
-            } 
+                return { success: true, user: userData };
+            }
+
 
             if (response.status === 202) {
                 return { success: true, requires2FA: true, message: response.message };
@@ -59,14 +106,13 @@ export const AuthProvider = ({ children }) => {
             });
 
             if (!response.error && response.status === 200) {
-                const token = response.token || response.data?.token;
-                const userData = response.data || response.data?.user || { login: email };
+                const { token, userData } = extractUserData(response, email);
 
                 localStorage.setItem('token', token);
                 localStorage.setItem('user', JSON.stringify(userData));
 
                 setUser(userData);
-                return { success: true };
+                return { success: true, user: userData };
             }
 
             return { success: false, error: response.error || "Código inválido." };
