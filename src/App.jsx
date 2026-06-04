@@ -1,7 +1,7 @@
 import { Navigate, Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import Header from './components/Header';
 import { useAuth } from './contexts/AuthContext';
-import AdminPage from './pages/AdminPage';
+import AdminPage from './pages/admin/AdminPage';
 import CadastroPage from './pages/CadastroPage';
 import CriarPublicacaoPage from './pages/CriarPublicacaoPage';
 import FavoritesPage from './pages/FavoritosPage';
@@ -25,10 +25,9 @@ function ProtectedLayout({ element }) {
 }
 
 function ProtectedAdminRoute({ element }) {
-    const { isLoggedIn } = useAuth();
-    const userType = localStorage.getItem('userType');
+    const { isLoggedIn, user } = useAuth();
 
-    if (!isLoggedIn || userType !== 'admin') {
+    if (!isLoggedIn || user?.role !== 'admin') {
         return <Navigate to="/iniciopage" replace />;
     }
 
