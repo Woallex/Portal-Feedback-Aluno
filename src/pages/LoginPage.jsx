@@ -13,19 +13,15 @@ function LoginPage() {
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [sendCode, setSendCode] = useState(false);
 
-    const { login, isLoggedIn, verify2FA } = useAuth(); 
+    const { login, isLoggedIn, verify2FA, user } = useAuth(); 
     const navigate = useNavigate();
 
     useEffect(() => {
         if (isLoggedIn) {
-            navigate('/');
+            const role = user?.role;
+            navigate(role === 'admin' ? '/admin' : '/');
         }
-
-        const userType = localStorage.getItem('userType');
-        if (!userType) {
-            navigate('/iniciopage');
-        }
-    }, [isLoggedIn, navigate]);
+    }, [isLoggedIn, navigate, user]);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -38,8 +34,8 @@ function LoginPage() {
             setSendCode(true);
             alert("Verifique seu email.");
         } else if (result.success) {
-            const userType = localStorage.getItem('userType');
-            navigate(userType === 'admin' ? '/admin' : '/');
+            const role = result.user?.role || user?.role;
+            navigate(role === 'admin' ? '/admin' : '/');
         } else {
             setError(result.error || "Erro ao realizar login.");
         }
@@ -53,8 +49,8 @@ function LoginPage() {
         const result = await verify2FA(loginInput, code2FA);
 
         if (result.success) {
-            const userType = localStorage.getItem('userType');
-            navigate(userType === 'admin' ? '/admin' : '/');
+            const role = result.user?.role || user?.role;
+            navigate(role === 'admin' ? '/admin' : '/');
         } else {
             setError(result.error || "Código inválido.");
         }
