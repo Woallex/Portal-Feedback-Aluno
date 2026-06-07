@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Button, Nav } from 'react-bootstrap';
-import { FaEdit, FaPlus, FaStar, FaTimes } from 'react-icons/fa';
+import { FaEdit, FaPlus, FaStar, FaTimes, FaDownload } from 'react-icons/fa'; 
 import { useNavigate } from 'react-router-dom';
 
 function MenuFlutuante() {
@@ -8,6 +8,42 @@ function MenuFlutuante() {
     const navigate = useNavigate();
 
     const toggleMenu = () => setIsOpen(!isOpen);
+
+    const handleExport = async () => {
+        try {
+            const token = localStorage.getItem('token');
+            
+            const response = await fetch('https://api-portal-feedback-aluno.onrender.com/publications/export', {
+                method: 'GET',
+                headers: {
+                    ...(token ? { 'Authorization': `Bearer ${token}` } : {})
+                }
+            });
+
+            if (!response.ok) {
+                throw new Error("Erro ao baixar o arquivo");
+            }
+
+            const blob = await response.blob();
+            
+            const url = window.URL.createObjectURL(blob);
+            
+            const link = document.createElement('a');
+            link.href = url;
+            link.setAttribute('download', 'feedbacks_portal.csv');
+            
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            window.URL.revokeObjectURL(url);
+            
+            setIsOpen(false);
+            
+        } catch (error) {
+            console.error("Erro na exportação:", error);
+            alert("Não foi possível exportar os dados no momento.");
+        }
+    };
 
     const menuStyle = {
         position: 'fixed',
@@ -22,15 +58,29 @@ function MenuFlutuante() {
                 <Nav className="flex-column mb-2 gap-2">
                     <Button
                         variant="success"
-                        onClick={() => navigate('/publicar')}
+                        onClick={() => {
+                            navigate('/publicar');
+                            setIsOpen(false);
+                        }}
                     >
                         <FaEdit className="me-2" /> Criar Publicação
                     </Button>
                     <Button
                         variant="success"
-                        onClick={() => navigate('/favorites')}
+                        onClick={() => {
+                            navigate('/favorites');
+                            setIsOpen(false);
+                        }}
                     >
                         <FaStar className="me-2" /> Ver Favoritos
+                    </Button>
+                    
+                    <Button
+                        variant="info"
+                        className="text-white fw-bold"
+                        onClick={handleExport}
+                    >
+                        <FaDownload className="me-2" /> Exportar CSV
                     </Button>
                 </Nav>
             )}
