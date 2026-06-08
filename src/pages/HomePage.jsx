@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useState } from 'react';
 import { Alert, Col, Container, Row, Spinner } from 'react-bootstrap';
 import { useLocation } from 'react-router-dom';
+import { io } from 'socket.io-client'; 
 import CardPublicacao from '../components/CardPublicacao';
 import MenuFlutuante from '../components/MenuFlutuante';
 import NavCategorias from '../components/NavCategorias';
@@ -28,7 +29,6 @@ function HomePage() {
     useEffect(() => {
         if (location.state?.successMessage) {
             setSuccessMessage(location.state.successMessage);
-
             window.history.replaceState({}, document.title);
         }
     }, [location.state]);
@@ -58,6 +58,28 @@ function HomePage() {
             loadComplaints();
         }
     }, [user, loadComplaints]);
+
+    useEffect(() => {
+        const socket = io('https://api-portal-feedback-aluno.onrender.com');
+
+        socket.on('new_publication', (novaPublicacao) => {
+            setComplaints((prevComplaints) => {
+                if (activeCategory && novaPublicacao.category !== activeCategory) {
+                    return prevComplaints;
+                }
+                
+                if (prevComplaints.some(comp => comp.id === novaPublicacao.id)) {
+                    return prevComplaints;
+                }
+
+                return [novaPublicacao, ...prevComplaints];
+            });
+        });
+
+        return () => {
+            socket.disconnect();
+        };
+    }, [activeCategory]);
 
     const handleCategoryChange = (category) => {
         setActiveCategory(category);
