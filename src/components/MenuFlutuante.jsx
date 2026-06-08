@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Button, Nav } from 'react-bootstrap';
-import { FaEdit, FaPlus, FaStar, FaTimes, FaDownload } from 'react-icons/fa'; 
+import { FaDownload, FaEdit, FaFilePdf, FaPlus, FaStar, FaTimes } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 
 function MenuFlutuante() {
@@ -45,6 +45,35 @@ function MenuFlutuante() {
         }
     };
 
+    const handleDownloadPDF = async () => {
+        try {
+            const token = localStorage.getItem('token');
+            const response = await fetch('https://api-portal-feedback-aluno.onrender.com/metrics/export-pdf', {
+                method: 'GET',
+                headers: {
+                    ...(token ? { 'Authorization': `Bearer ${token}` } : {})
+                }
+            });
+
+            if (!response.ok) throw new Error("Erro ao baixar o relatório PDF");
+
+            const blob = await response.blob();
+            const url = window.URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.setAttribute('download', `relatorio_monitoramento.pdf`); 
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            window.URL.revokeObjectURL(url);
+            
+            setIsOpen(false);
+        } catch (error) {
+            console.error("Erro na exportação do PDF:", error);
+            alert("Não foi possível exportar o relatório no momento.");
+        }
+    };
+
     const menuStyle = {
         position: 'fixed',
         bottom: '20px',
@@ -76,11 +105,19 @@ function MenuFlutuante() {
                     </Button>
                     
                     <Button
-                        variant="info"
+                        variant="success"
                         className="text-white fw-bold"
                         onClick={handleExport}
                     >
                         <FaDownload className="me-2" /> Exportar CSV
+                    </Button>
+
+                    <Button
+                        variant="success"
+                        className="text-dark fw-bold"
+                        onClick={handleDownloadPDF}
+                    >
+                        <FaFilePdf className="me-2" /> Relatório PDF
                     </Button>
                 </Nav>
             )}
