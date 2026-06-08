@@ -82,7 +82,7 @@ function CardPublicacao({ publicacao, onToggleFavorite, onDeletePublication }) {
             )}
 
             <Card className="publicacao-card h-100 shadow-sm">
-                <Card.Body>
+                <Card.Body className="d-flex flex-column">
                     <div className="d-flex align-items-center justify-content-between mb-3">
                         <Card.Title className="mb-0">
                             {publicacao.title}
@@ -105,21 +105,43 @@ function CardPublicacao({ publicacao, onToggleFavorite, onDeletePublication }) {
                         </Button>
                     </div>
 
-                    <Card.Text className="text-muted mb-3">
+                    <Card.Text className="text-muted mb-3 flex-grow-1">
                         {publicacao.description}
                     </Card.Text>
 
-                    <Badge pill bg={getCategoryVariant(publicacao.category)} className="mb-2">
-                        <FaTag className="me-1" /> {publicacao.category}
-                    </Badge>
+                    {publicacao.mediaUrl && (
+                        <div className="mb-3 text-center">
+                            {publicacao.mediaType === 'image' ? (
+                                <img 
+                                    src={publicacao.mediaUrl} 
+                                    alt="Evidência anexa" 
+                                    className="img-fluid rounded border" 
+                                    style={{ maxHeight: '250px', objectFit: 'cover' }} 
+                                />
+                            ) : publicacao.mediaType === 'video' ? (
+                                <video 
+                                    controls 
+                                    src={publicacao.mediaUrl} 
+                                    className="w-100 rounded border" 
+                                    style={{ maxHeight: '250px' }} 
+                                />
+                            ) : null}
+                        </div>
+                    )}
 
-                    <div className="d-flex flex-column text-sm">
-                        <small className="mb-1">
-                            <FaUser className="me-1" /> {publicacao.author}
-                        </small>
-                        <small className="text-muted">
-                            <FaCalendarAlt className="me-1" /> Publicado em {publicacao.date}
-                        </small>
+                    <div className="mt-auto">
+                        <Badge pill bg={getCategoryVariant(publicacao.category)} className="mb-2">
+                            <FaTag className="me-1" /> {publicacao.category}
+                        </Badge>
+
+                        <div className="d-flex flex-column text-sm">
+                            <small className="mb-1">
+                                <FaUser className="me-1" /> {publicacao.author}
+                            </small>
+                            <small className="text-muted">
+                                <FaCalendarAlt className="me-1" /> Publicado em {publicacao.date}
+                            </small>
+                        </div>
                     </div>
                 </Card.Body>
             </Card>

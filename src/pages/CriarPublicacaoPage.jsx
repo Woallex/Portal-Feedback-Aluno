@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Alert, Button, Card, Col, Container, Form, Row, Spinner } from 'react-bootstrap';
-import { FaEdit, FaRegStar, FaStar, FaTimes } from 'react-icons/fa';
+import { FaEdit, FaRegStar, FaStar, FaTimes, FaUpload } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 import { apiFetch } from '../utils/api';
 
@@ -15,6 +15,7 @@ function CriarPublicacaoPage() {
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
     const [category, setCategory] = useState('');
+    const [file, setFile] = useState(null);
     const [isFavorite, setIsFavorite] = useState(false);
 
     const [loading, setLoading] = useState(false);
@@ -39,21 +40,33 @@ function CriarPublicacaoPage() {
         setLoading(true);
 
         try {
-            const response = await apiFetch('/publications', {
-                method: 'POST',
-                body: JSON.stringify({ title, description, category }),
-            });
-
-            if (response.error) {
-                throw new Error(response.error || "Erro ao criar publicação.");
+            const formData = new FormData();
+            formData.append('title', title);
+            formData.append('description', description);
+            formData.append('category', category);
+            if (file) {
+                formData.append('file', file);
             }
 
-            const novaPublicacao = response.data;
+            const token = localStorage.getItem('token');
+            const res = await fetch('https://api-portal-feedback-aluno.onrender.com/publications', {
+                method: 'POST',
+                headers: {
+                    ...(token ? { 'Authorization': `Bearer ${token}` } : {})
+                },
+                body: formData
+            });
+
+            const responseData = await res.json();
+
+            if (!res.ok) {
+                throw new Error(responseData.message || "Erro ao criar publicação.");
+            }
+
+            const novaPublicacao = responseData.data;
 
             if (isFavorite) {
-                await apiFetch(`/favorites/${novaPublicacao.id}`, {
-                    method: 'POST',
-                });
+                await apiFetch(`/favorites/${novaPublicacao.id}`, { method: 'POST' });
             }
 
             navigate('/', {
@@ -66,11 +79,9 @@ function CriarPublicacaoPage() {
         }
     };
 
-
     return (
         <Container className='d-flex justify-content-center align-items-center vh-100'>
-            <Card className="shadow-lg">
-
+            <Card className="shadow-lg" style={{ width: '100%', maxWidth: '600px' }}>
                 <Card.Header className="d-flex justify-content-between align-items-center bg-primary text-white">
                     <h4 className="mb-0">
                         <FaEdit className="me-2" /> Nova Publicação
@@ -136,9 +147,19 @@ function CriarPublicacaoPage() {
                             </Form.Select>
                         </Form.Group>
 
+                        <Form.Group className="mb-4" controlId="formArquivo">
+                            <Form.Label><FaUpload className="me-2"/>Anexar Imagem ou Vídeo (Opcional)</Form.Label>
+                            <Form.Control
+                                type="file"
+                                accept="image/*,video/*"
+                                onChange={(e) => setFile(e.target.files[0])}
+                                disabled={loading || success}
+                            />
+                        </Form.Group>
+
                         <Row className="mb-4 align-items-center">
                             <Col xs={4}>
-                                <Form.Label className="mb-0">Dados</Form.Label>
+                                <Form.Label className="mb-0">Data</Form.Label>
                             </Col>
                             <Col xs={8} className="text-end">
                                 <Form.Control
@@ -151,7 +172,6 @@ function CriarPublicacaoPage() {
                         </Row>
 
                         <div className="d-flex justify-content-between align-items-center">
-
                             <Button
                                 variant="outline-danger"
                                 onClick={handleDescartar}
@@ -168,7 +188,7 @@ function CriarPublicacaoPage() {
                                 {loading ? (
                                     <>
                                         <Spinner animation="border" size="sm" className="me-2" />
-                                        Publicando...
+                                        Enviando...
                                     </>
                                 ) : 'Publicar'}
                             </Button>
