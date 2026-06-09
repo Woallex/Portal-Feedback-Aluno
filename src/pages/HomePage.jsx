@@ -62,16 +62,20 @@ function HomePage() {
     useEffect(() => {
         const socket = io('https://api-portal-feedback-aluno.onrender.com');
 
-        socket.on('new_publication', (novaPublicacao) => {
-            setComplaints((prevComplaints) => {
-                if (activeCategory && novaPublicacao.category !== activeCategory) {
-                    return prevComplaints;
-                }
-                
-                if (prevComplaints.some(comp => comp.id === novaPublicacao.id)) {
-                    return prevComplaints;
-                }
+        socket.on('connect', () => {
+            console.log("Conectado ao servidor Socket.io com ID:", socket.id);
+        });
 
+        socket.on('connect_error', (err) => {
+            console.error("Erro ao conectar no Socket:", err.message);
+        });
+
+        socket.on('new_publication', (novaPublicacao) => {
+            console.log("Chegou um post novo em tempo real!", novaPublicacao);
+            
+            setComplaints((prevComplaints) => {
+                if (activeCategory && novaPublicacao.category !== activeCategory) return prevComplaints;
+                if (prevComplaints.some(comp => comp.id === novaPublicacao.id)) return prevComplaints;
                 return [novaPublicacao, ...prevComplaints];
             });
         });
