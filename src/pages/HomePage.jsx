@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from 'react';
 import { Alert, Col, Container, Row, Spinner } from 'react-bootstrap';
 import { useLocation } from 'react-router-dom';
-import { io } from 'socket.io-client'; 
+import { io } from 'socket.io-client';
 import CardPublicacao from '../components/CardPublicacao';
 import MenuFlutuante from '../components/MenuFlutuante';
 import NavCategorias from '../components/NavCategorias';
@@ -70,20 +70,16 @@ function HomePage() {
             console.error("Erro ao conectar no Socket:", err.message);
         });
 
-        socket.on('new_publication', (novaPublicacao) => {
-            console.log("Chegou um post novo em tempo real!", novaPublicacao);
+        socket.on('new_publication', () => {
+            console.log("Post novo na rede! Atualizando a lista...");
             
-            setComplaints((prevComplaints) => {
-                if (activeCategory && novaPublicacao.category !== activeCategory) return prevComplaints;
-                if (prevComplaints.some(comp => comp.id === novaPublicacao.id)) return prevComplaints;
-                return [novaPublicacao, ...prevComplaints];
-            });
+            loadComplaints();
         });
 
         return () => {
             socket.disconnect();
         };
-    }, [activeCategory]);
+    }, [loadComplaints]);
 
     const handleCategoryChange = (category) => {
         setActiveCategory(category);
